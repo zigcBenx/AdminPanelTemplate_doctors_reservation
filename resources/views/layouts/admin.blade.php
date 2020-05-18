@@ -11,6 +11,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet" />
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
@@ -18,6 +19,19 @@
     <link href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
+
+     <!-- daterange picker -->
+  <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
+
+
+  <!-- fullCalendar -->
+    <link rel="stylesheet" href="{{ asset('plugins/fullcalendar/main.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/fullcalendar-interaction/main.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/fullcalendar-daygrid/main.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/fullcalendar-timegrid/main.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/fullcalendar-bootstrap/main.min.css') }}">
+
+
     <link href="{{ asset('css/adminltev3.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
     @yield('styles')
@@ -54,9 +68,11 @@
         @include('partials.menu')
         <div class="content-wrapper" style="min-height: 917px;">
             <!-- Main content -->
-            <section class="content" style="padding-top: 20px">
-                @yield('content')
-            </section>
+            <div id="app">
+              <section class="content" style="padding-top: 20px">
+                  @yield('content')
+              </section>
+            </div>
             <!-- /.content -->
         </div>
 
@@ -73,6 +89,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -182,7 +200,23 @@
   $.fn.dataTable.ext.classes.sPageButton = '';
 });
 
+
+
     </script>
+
+    <!-- fullCalendar 2.2.5 -->
+    <script src="{{ asset('plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('plugins/fullcalendar/main.min.js') }}"></script>
+    <script src="{{ asset('plugins/fullcalendar-daygrid/main.min.js') }}"></script>
+    <script src="{{ asset('plugins/fullcalendar-timegrid/main.min.js') }}"></script>
+    <script src="{{ asset('plugins/fullcalendar-interaction/main.min.js') }}"></script>
+    <script src="{{ asset('plugins/fullcalendar-bootstrap/main.min.js') }}"></script>
+
+<script src="{{ asset('plugins/inputmask/min/jquery.inputmask.bundle.min.js') }}"></script>
+<!-- date-range-picker -->
+<script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+
+
     @yield('scripts')
     <script>
         /*!
@@ -194,6 +228,12 @@
     //# sourceMappingURL=adminlte.min.js.map
 
     </script>
+
+   
+    
+
+    <script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 
 </html>

@@ -24,4 +24,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('products/destroy', 'ProductsController@massDestroy')->name('products.massDestroy');
 
     Route::resource('products', 'ProductsController');
+
+    Route::get('reservations_control','HomeController@reservations')->name('reservations_control.show');
+    Route::get('reserve','HomeController@reserve')->name('reserve.show');
 });

@@ -8,4 +8,13 @@ class HomeController
     {
         return view('home');
     }
+
+    public function reservations()
+    {
+        return view('admin.reservations.index');
+    }
+
+    public function reserve() {
+    	return view('admin.reservations.reserve');
+    }
 }

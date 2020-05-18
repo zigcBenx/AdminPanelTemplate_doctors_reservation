@@ -3,7 +3,12 @@
 <div class="content">
     <div class="row">
         <div class="col-lg-12">
-            Home
+        	<div class="container">
+	        	<actions-component></actions-component>
+	        	<hr>
+	            <doctors-component></doctors-component>
+	            <profile-edit-component></profile-edit-component>
+            </div>
         </div>
     </div>
 </div>

@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="min-height: 917px;">
     <!-- Brand Logo -->
     <a href="#" class="brand-link">
-        <span class="brand-text font-weight-light">Project</span>
+        <span class="brand-text font-weight-light"><b>myXLife</b></span>
     </a>
 
     <!-- Sidebar -->
@@ -12,7 +12,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="{{ route("admin.home") }}" class="nav-link">
+                    <a href="{{ route('admin.home') }}" class="nav-link">
                         <p>
                             <i class="fas fa-tachometer-alt">
 
@@ -35,7 +35,7 @@
                         <ul class="nav nav-treeview">
                             @can('permission_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.permissions.index") }}" class="nav-link {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.permissions.index') }}" class="nav-link {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
                                         <i class="fas fa-unlock-alt">
 
                                         </i>
@@ -47,7 +47,7 @@
                             @endcan
                             @can('role_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.roles.index") }}" class="nav-link {{ request()->is('admin/roles') || request()->is('admin/roles/*') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.roles.index') }}" class="nav-link {{ request()->is('admin/roles') || request()->is('admin/roles/*') ? 'active' : '' }}">
                                         <i class="fas fa-briefcase">
 
                                         </i>
@@ -59,7 +59,7 @@
                             @endcan
                             @can('user_access')
                                 <li class="nav-item">
-                                    <a href="{{ route("admin.users.index") }}" class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.users.index') }}" class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
                                         <i class="fas fa-user">
 
                                         </i>
@@ -80,6 +80,18 @@
                             </i>
                             <p>
                                 <span>{{ trans('global.product.title') }}</span>
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('reservation_control_access')
+                    <li class="nav-item">
+                        <a href="{{ route('admin.reservations_control.show') }}" class="nav-link {{ request()->is('admin/reservations') || request()->is('admin/reservations/*') ? 'active' : '' }}">
+                            <i class="fas fa-calendar">
+
+                            </i>
+                            <p>
+                                <span>{{ trans('global.reservations_control.title') }}</span>
                             </p>
                         </a>
                     </li>

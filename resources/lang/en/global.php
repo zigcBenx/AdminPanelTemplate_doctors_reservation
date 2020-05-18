@@ -353,4 +353,18 @@ return [
             'deleted_at_helper'  => '',
         ],
     ],
+    'reservations_control'                              => [
+        'title'          => 'Reservations Control',
+        'title_singular' => 'Reservation',
+        'fields'         => [
+            'todo'                 => 'TODO',
+        ],
+    ],
+    'reserve'                              => [
+        'title'          => 'Reserve apointment',
+        'title_singular' => 'Make reservation',
+        'fields'         => [
+            'todo'                 => 'TODO',
+        ],
+    ],
 ];
