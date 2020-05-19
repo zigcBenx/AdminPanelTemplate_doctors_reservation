@@ -311,7 +311,7 @@ return [
     'deselect_all'                         => 'Deselect all',
     'team-management'                      => 'Teams',
     'team-management-singular'             => 'Team',
-    'site_title'                           => 'Laravel + AdminLTE3',
+    'site_title'                           => 'MyXLife',
     'userManagement'                       => [
         'title'          => 'User Management',
         'title_singular' => 'User Management',

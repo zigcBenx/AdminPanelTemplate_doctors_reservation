@@ -6,15 +6,15 @@
                     <div class="card-header">Izberi zdravnika</div>
 
                     <div class="card-body">
-                    	Trenutno izbran zdravnik: <span><b>Joze Novak</b></span> <i class="fas fa-pencil-alt"></i>
+                    	Trenutno izbran zdravnik: <span><b>Joze Novak</b></span>
                     	<table>
                     		<tr>
                     			<td>
                     				<select class="form-control">
-			                        	<option value="" v-for="doctor in doctors" :key="doctor.DoctorIVZCode">
+			                        	<option v-for="doctor in doctors" :key="doctor.DoctorIVZCode" :value="doctor.DoctorIVZCode">
 			                        		{{ doctor.DoctorFirstName }} {{ doctor.DoctorLastName }}
 			                        	</option>
-			                        </select>			
+			                        </select>
                     			</td>
                     			<td>
                     				<button type="button" class="btn btn-block btn-outline-success btn-md" style="max-width:200px;">Shrani</button>
@@ -53,7 +53,7 @@
             // 	console.log(data.Doctors);
             // 	console.log(status);
             // });
-            	
+
 			//this.doctors = ['d1','d2','d3'];
         }
     }

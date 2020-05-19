@@ -22,6 +22,7 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('doctors-component', require('./components/DoctorsComponent.vue').default);
+Vue.component('hospital-component', require('./components/HospitalComponent.vue').default);
 Vue.component('actions-component', require('./components/ActionsComponent.vue').default);
 Vue.component('profile-edit-component', require('./components/ProfileEditComponent.vue').default);
 /**

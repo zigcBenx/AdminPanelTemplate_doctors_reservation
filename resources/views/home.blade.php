@@ -6,6 +6,7 @@
         	<div class="container">
 	        	<actions-component></actions-component>
 	        	<hr>
+                <hospital-component></hospital-component>
 	            <doctors-component></doctors-component>
 	            <profile-edit-component></profile-edit-component>
             </div>

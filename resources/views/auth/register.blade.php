@@ -40,6 +40,34 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone number') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="phone" type="tel" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" name="phone" value="{{ old('phone') }}" required>
+
+                                @if ($errors->has('phone'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('phone') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="zzzs" class="col-md-4 col-form-label text-md-right">{{ __('ZZZS number') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="zzzs" type="text" class="form-control{{ $errors->has('zzzs') ? ' is-invalid' : '' }}" name="zzzs" value="{{ old('phone') }}" required>
+
+                                @if ($errors->has('zzzs'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('zzzs') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -68,6 +96,9 @@
                                 </button>
                             </div>
                         </div>
+                        <a class="" href="{{ route('login') }}">
+                            {{ trans('global.login') }}
+                        </a>
                     </form>
                 </div>
             </div>

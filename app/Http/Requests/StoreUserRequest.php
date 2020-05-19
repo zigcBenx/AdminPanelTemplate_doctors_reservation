@@ -21,6 +21,12 @@ class StoreUserRequest extends FormRequest
             'email'    => [
                 'required',
             ],
+            'phone'    => [
+                'required',
+            ],
+            'zzzs'   => [
+                'required',
+            ],
             'password' => [
                 'required',
             ],

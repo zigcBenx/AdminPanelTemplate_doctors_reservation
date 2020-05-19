@@ -72,18 +72,6 @@
                         </ul>
                     </li>
                 @endcan
-                @can('product_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.products.index") }}" class="nav-link {{ request()->is('admin/products') || request()->is('admin/products/*') ? 'active' : '' }}">
-                            <i class="fas fa-cogs">
-
-                            </i>
-                            <p>
-                                <span>{{ trans('global.product.title') }}</span>
-                            </p>
-                        </a>
-                    </li>
-                @endcan
                 @can('reservation_control_access')
                     <li class="nav-item">
                         <a href="{{ route('admin.reservations_control.show') }}" class="nav-link {{ request()->is('admin/reservations') || request()->is('admin/reservations/*') ? 'active' : '' }}">

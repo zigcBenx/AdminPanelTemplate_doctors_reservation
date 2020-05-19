@@ -10,7 +10,7 @@
     </div>
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
+            <p class="login-box-msg">Za naročanje se je potrebno prijaviti</p>
             @if(\Session::has('message'))
                 <p class="alert alert-info">
                     {{ \Session::get('message') }}
@@ -45,6 +45,10 @@
             <p class="mb-1">
                 <a class="" href="{{ route('password.request') }}">
                     {{ trans('global.forgot_password') }}
+                </a>
+                <br>
+                <a class="" href="{{ route('register') }}">
+                    {{ trans('global.registration') }}
                 </a>
             </p>
             <p class="mb-0">

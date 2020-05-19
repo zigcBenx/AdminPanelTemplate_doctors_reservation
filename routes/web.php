@@ -4,7 +4,7 @@ Route::redirect('/', '/login');
 
 Route::redirect('/home', '/admin');
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => true]);
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');
@@ -21,9 +21,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::resource('users', 'UsersController');
 
-    Route::delete('products/destroy', 'ProductsController@massDestroy')->name('products.massDestroy');
-
-    Route::resource('products', 'ProductsController');
+//    Route::delete('products/destroy', 'ProductsController@massDestroy')->name('products.massDestroy');
+//
+//    Route::resource('products', 'ProductsController');
 
     Route::get('reservations_control','HomeController@reservations')->name('reservations_control.show');
     Route::get('reserve','HomeController@reserve')->name('reserve.show');
