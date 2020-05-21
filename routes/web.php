@@ -27,4 +27,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('reservations_control','HomeController@reservations')->name('reservations_control.show');
     Route::get('reserve','HomeController@reserve')->name('reserve.show');
+
+    Route::get('recepti','HomeController@recepti')->name('recepti');
+    Route::get('pregledi','HomeController@pregledi')->name('pregledi');
 });

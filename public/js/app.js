@@ -19547,10 +19547,17 @@ var staticRenderFns = [
             _c("i", { staticClass: "fas fa-hospital" })
           ]),
           _vm._v(" "),
-          _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-            _vm._v("Vpogled "),
-            _c("i", { staticClass: "fas fa-arrow-circle-right" })
-          ])
+          _c(
+            "a",
+            {
+              staticClass: "small-box-footer",
+              attrs: { href: "admin/pregledi" }
+            },
+            [
+              _vm._v("Vpogled "),
+              _c("i", { staticClass: "fas fa-arrow-circle-right" })
+            ]
+          )
         ])
       ]),
       _vm._v(" "),
@@ -19568,10 +19575,17 @@ var staticRenderFns = [
             _c("i", { staticClass: "fas fa-receipt" })
           ]),
           _vm._v(" "),
-          _c("a", { staticClass: "small-box-footer", attrs: { href: "#" } }, [
-            _vm._v("Vpogled "),
-            _c("i", { staticClass: "fas fa-arrow-circle-right" })
-          ])
+          _c(
+            "a",
+            {
+              staticClass: "small-box-footer",
+              attrs: { href: "admin/recepti" }
+            },
+            [
+              _vm._v("Vpogled "),
+              _c("i", { staticClass: "fas fa-arrow-circle-right" })
+            ]
+          )
         ])
       ])
     ])

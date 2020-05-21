@@ -17,4 +17,12 @@ class HomeController
     public function reserve() {
     	return view('admin.reservations.reserve');
     }
+
+    public function recepti() {
+        return view('admin.recepti');
+    }
+
+    public function pregledi() {
+        return view('admin.pregledi');
+    }
 }

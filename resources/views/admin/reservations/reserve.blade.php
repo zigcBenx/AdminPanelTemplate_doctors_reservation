@@ -18,12 +18,35 @@
 				</div>
 				<!-- /.input group -->
             </div>
+                <hr>
+                <div class="callout callout-info">
+                    <div class="row">
+                        <div class="col-8">
+                            <h5>Termin 1: Dohter Janez</h5>
+                        </div>
+                        <div class="col-4">
+                            <button type="button" class="btn btn-info btn-lg" style="float:right;">Naroči se</button>
+                        </div>
+                    </div>
+                    <p>15.00 - 15.30</p>
+                </div>
+                <div class="callout callout-info">
+                    <div class="row">
+                        <div class="col-8">
+                            <h5>Termin 2: Dohter Janez</h5>
+                        </div>
+                        <div class="col-4">
+                            <button type="button" class="btn btn-info btn-lg" style="float:right;">Naroči se</button>
+                        </div>
+                    </div>
+                    <p>15.30 - 16.00</p>
+                </div>
         </div>
     </div>
 </div>
 
 @endsection
-							
+
 
 @section('scripts')
 @parent

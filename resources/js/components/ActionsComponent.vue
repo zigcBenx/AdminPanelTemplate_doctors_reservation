@@ -26,7 +26,7 @@
               <div class="icon">
                 <i class="fas fa-hospital"></i>
               </div>
-              <a href="#" class="small-box-footer">Vpogled <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="admin/pregledi" class="small-box-footer">Vpogled <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -41,7 +41,7 @@
               <div class="icon">
                 <i class="fas fa-receipt"></i>
               </div>
-              <a href="#" class="small-box-footer">Vpogled <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="admin/recepti" class="small-box-footer">Vpogled <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
