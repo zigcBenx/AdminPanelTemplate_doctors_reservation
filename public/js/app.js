@@ -20188,10 +20188,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("button", { staticClass: "btn btn-success" }, [
-      _vm._v("Dodaj zdravnika "),
-      _c("i", { staticClass: "fa fa-plus" })
-    ])
+    return _c(
+      "a",
+      { staticClass: "btn btn-success", attrs: { href: "/admin" } },
+      [_vm._v("Dodaj zdravnika "), _c("i", { staticClass: "fa fa-plus" })]
+    )
   },
   function() {
     var _vm = this

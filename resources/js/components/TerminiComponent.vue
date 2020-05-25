@@ -25,7 +25,7 @@
                     <option :value="Metka">Metka</option>
                     <option :value="Carovnica">Carovnica</option>
                 </select>
-                <button class="btn btn-success">Dodaj zdravnika <i class="fa fa-plus"></i></button>
+                <a href="/admin" class="btn btn-success">Dodaj zdravnika <i class="fa fa-plus"></i></a>
             </div>
             <!-- /.input group -->
         </div>
