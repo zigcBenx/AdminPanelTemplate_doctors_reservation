@@ -6,6 +6,7 @@
                     <div class="card-header">Izberi zdravstveni dom</div>
 
                     <div class="card-body">
+                        <b>Zdravstveni dom Trbovlje</b>
                     </div>
                 </div>
             </div>
