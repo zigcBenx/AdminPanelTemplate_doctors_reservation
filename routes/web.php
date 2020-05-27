@@ -30,4 +30,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('recepti','HomeController@recepti')->name('recepti');
     Route::get('pregledi','HomeController@pregledi')->name('pregledi');
+
+    Route::post('user-doctor','UserDoctorController@addUserDoctor')->name('user-doctor');
+    Route::post('user-doctor-show','UserDoctorController@showUserDoctor')->name('user-doctor-show');
 });

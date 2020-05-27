@@ -6,7 +6,7 @@
                     <div class="card-header">Izberi zdravnika</div>
 
                     <div class="card-body">
-                    	Moji zdravniki: <span><b>-ime-, -ime2-, -ime3-</b></span>
+                    	Moji zdravniki: <span id="users-doctors-list"></span>
                     	<table>
                     		<tr>
                     			<td>
@@ -53,15 +53,22 @@
                 // get doctor from select input
                 let selectedDoctorsName = $("#doctorsList option:selected").text().trim();
                 let selectedDoctorsId = $("#doctorsList option:selected").val();
-
                 // get Doctor data
                 fetch('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode='+selectedDoctorsId+'&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType= browser (User-Agent): Mozilla/5.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife')
                 .then( res => res.json())
                 .then( res => {
                     this.doctorInfo = res.DoctorInfos;
-                    $("#doctorNameSpan").html(selectedDoctorsName);
-                    $("#doctorNameSpan").attr('id',selectedDoctorsId);
+
+                    // set doctor id to form input
+                    $('#doctor-id').val("");
+                    $('#doctor-id').val(selectedDoctorsId);
+
+                    $("#doctorNameSpan").html("");
+                    $("#doctorNameSpan").append('<b>'+selectedDoctorsName+'</b>');
+
+
                     // for later select on change -> see home.blade.php javascript
+                    $('#doctorsInfoArr').val("");
                     $('#doctorsInfoArr').val(JSON.stringify(this.doctorInfo));
 
                     // populate first auto selected doctors info
@@ -82,6 +89,7 @@
                     }
 
                     // populate ambulante
+                    $('#ambulante').html("");
                     for (let i = 0; i<this.doctorInfo.length;i++){
                         $('#ambulante').append($('<option>', {
                             value: this.doctorInfo[i].WorkplaceCode,

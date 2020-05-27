@@ -21,10 +21,50 @@
 <script>
 
     $(document).ready(function(){
-        // script for doctor-modal
+
+        /**
+         * script for showing users doctors
+         */
+        $.post('{{ route("admin.user-doctor-show") }}', {_token: "{{ csrf_token() }}"})
+            .done(function(data){
+                console.log(data);
+
+                $('#users-doctors-list').html('');
+                for(let i = 0; i < data.length; i++) {
+                    let doctorId = data[i].doctor_id;
+                    fetch('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode='+doctorId+'&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType= browser (User-Agent): Mozilla/5.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife')
+                        .then( res => res.json())
+                        .then( res => {
+                            let doctorsFirstName = res.DoctorInfos[0].DoctorFirstName;
+                            let doctorsLastName = res.DoctorInfos[0].DoctorLastName;
+                            $('#users-doctors-list').append("<b>" + doctorsFirstName + " " + doctorsLastName + "</b>,");
+                        });
+                }
+
+                // append in this list
+
+            });
+
+
+        /**
+         * script for saving doctor & workplace for user
+         */
+        $('#save-doctor-button').click(function(){
+            let submittedDoctor = $('#doctor-id').val();
+            // alert(submittedDoctor);
+            $.post('{{ route("admin.user-doctor")  }}',{_token: "{{ csrf_token() }}", docId: submittedDoctor, workplace: $('#ambulante').val() })
+                .done(function(data){
+                    $('#modal-doctor').modal('hide');
+                    alert("Doktor uspešno dodan");
+                });
+            });
+
+        /**
+         * script for doctor-modal fill data
+         */
         $('#ambulante').change(function(){
             let doctorsInfo = JSON.parse($('#doctorsInfoArr').val());
-            console.log(doctorsInfo[$(this).prop('selectedIndex')]);
+
             $('#doctorAddress').html(doctorsInfo[$(this).prop('selectedIndex')].WorkplaceAddress);
             $('#doctorPhone').html(doctorsInfo[$(this).prop('selectedIndex')].WorkplacePhone);
             $('#doctorEmail').html(doctorsInfo[$(this).prop('selectedIndex')].DoctorEmail);

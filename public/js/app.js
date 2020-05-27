@@ -1822,10 +1822,14 @@ __webpack_require__.r(__webpack_exports__);
       fetch('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode=' + selectedDoctorsId + '&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType= browser (User-Agent): Mozilla/5.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife').then(function (res) {
         return res.json();
       }).then(function (res) {
-        _this2.doctorInfo = res.DoctorInfos;
-        $("#doctorNameSpan").html(selectedDoctorsName);
-        $("#doctorNameSpan").attr('id', selectedDoctorsId); // for later select on change -> see home.blade.php javascript
+        _this2.doctorInfo = res.DoctorInfos; // set doctor id to form input
 
+        $('#doctor-id').val("");
+        $('#doctor-id').val(selectedDoctorsId);
+        $("#doctorNameSpan").html("");
+        $("#doctorNameSpan").append('<b>' + selectedDoctorsName + '</b>'); // for later select on change -> see home.blade.php javascript
+
+        $('#doctorsInfoArr').val("");
         $('#doctorsInfoArr').val(JSON.stringify(_this2.doctorInfo)); // populate first auto selected doctors info
 
         $('#doctorAddress').html(_this2.doctorInfo[0].WorkplaceAddress);
@@ -1845,6 +1849,8 @@ __webpack_require__.r(__webpack_exports__);
           $('#storitve').append('<li>' + _this2.doctorInfo[0].VZSs[_i].Description + '</li>');
         } // populate ambulante
 
+
+        $('#ambulante').html("");
 
         for (var _i2 = 0; _i2 < _this2.doctorInfo.length; _i2++) {
           $('#ambulante').append($('<option>', {
@@ -19770,7 +19776,7 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _vm._v("\n                    \tMoji zdravniki: "),
-            _vm._m(0),
+            _c("span", { attrs: { id: "users-doctors-list" } }),
             _vm._v(" "),
             _c("table", [
               _c("tr", [
@@ -19823,14 +19829,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", [_c("b", [_vm._v("-ime-, -ime2-, -ime3-")])])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
