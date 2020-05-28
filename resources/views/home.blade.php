@@ -37,11 +37,10 @@
                         .then( res => {
                             let doctorsFirstName = res.DoctorInfos[0].DoctorFirstName;
                             let doctorsLastName = res.DoctorInfos[0].DoctorLastName;
+                            // append
                             $('#users-doctors-list').append("<b>" + doctorsFirstName + " " + doctorsLastName + "</b>,");
                         });
                 }
-
-                // append in this list
 
             });
 
@@ -55,7 +54,13 @@
             $.post('{{ route("admin.user-doctor")  }}',{_token: "{{ csrf_token() }}", docId: submittedDoctor, workplace: $('#ambulante').val() })
                 .done(function(data){
                     $('#modal-doctor').modal('hide');
-                    alert("Doktor uspešno dodan");
+                    if(data == 'exists'){
+                        alert('Ta doktor je že dodan.', 'Napaka');
+                        return;
+                    }
+                    $('#modal-doctor').modal('hide');
+                    alert("Doktor uspešno dodan", 'Uspešno');
+                    location.reload(); // TODO: instead of this do async refresh
                 });
             });
 

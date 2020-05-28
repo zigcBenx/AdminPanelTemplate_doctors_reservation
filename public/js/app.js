@@ -1986,8 +1986,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2001,7 +1999,7 @@ __webpack_require__.r(__webpack_exports__);
           "Start": "2020-05-23T16:35:44.049Z",
           "End": "2020-05-23T17:35:44.049Z"
         }, {
-          "SlotId": 1,
+          "SlotId": 2,
           "Start": "2020-05-23T17:35:44.049Z",
           "End": "2020-05-23T18   :35:44.049Z"
         }],
@@ -2009,12 +2007,33 @@ __webpack_require__.r(__webpack_exports__);
         "ErrorCode": "string",
         "ErrorDescription": "string"
       },
-      doctor: '' // value from select
+      doctors: [] // value from select
 
     };
   },
-  created: function created() {},
-  methods: {
+  created: function created() {// this.getUsersDoctors();
+  },
+  methods: {// getUsersDoctors(){
+    //     fetch('/admin/user-doctor-show', {_token: "{{ csrf_token() }}"})
+    //
+    //         .then( res => {
+    //             console.log(res);
+    //             // $('#users-doctors-list').html('');
+    //             // for(let i = 0; i < data.length; i++) {
+    //             //     let doctorId = data[i].doctor_id;
+    //             //     fetch('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode='+doctorId+'&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType= browser (User-Agent): Mozilla/5.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife')
+    //             //         .then( res => res.json())
+    //             //         .then( res => {
+    //             //             let doctorsFirstName = res.DoctorInfos[0].DoctorFirstName;
+    //             //             let doctorsLastName = res.DoctorInfos[0].DoctorLastName;
+    //             //             console.log(res.DoctorInfos[0].DoctorFirstName)
+    //             //             // $('#users-doctors-list').option("<b>" + doctorsFirstName + " " + doctorsLastName + "</b>,");
+    //             //         });
+    //             // }
+    //
+    //         });
+    // },
+
     /*fetchFreeSlots(){
         fetch('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=mozilla&request.client.applicationVersion=1.0')
             .then( res => res.json())
@@ -20099,42 +20118,7 @@ var render = function() {
     "div",
     { staticClass: "termini" },
     [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "datepicker" } }, [_vm._v("Date range:")]),
-        _vm._v(" "),
-        _vm._m(0),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c("label", { attrs: { for: "doctor" } }, [_vm._v("Vaši zdravniki")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "input-group" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              staticClass: "form-control float-right",
-              attrs: { name: "", id: "doctor" }
-            },
-            [
-              _c("option", { domProps: { value: _vm.Janko } }, [
-                _vm._v("Janko")
-              ]),
-              _vm._v(" "),
-              _c("option", { domProps: { value: _vm.Metka } }, [
-                _vm._v("Metka")
-              ]),
-              _vm._v(" "),
-              _c("option", { domProps: { value: _vm.Carovnica } }, [
-                _vm._v("Carovnica")
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _vm._m(2)
-        ])
-      ]),
+      _vm._m(0),
       _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
@@ -20145,7 +20129,7 @@ var render = function() {
           "div",
           { key: termin.SlotId, staticClass: "callout callout-info" },
           [
-            _vm._m(3, true),
+            _vm._m(1, true),
             _vm._v(" "),
             _c("p", [_vm._v(_vm._s(termin.End) + " - " + _vm._s(termin.Start))])
           ]
@@ -20160,38 +20144,46 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group" }, [
-      _c("div", { staticClass: "input-group-prepend" }, [
-        _c("span", { staticClass: "input-group-text" }, [
-          _c("i", { staticClass: "far fa-calendar-alt" })
-        ])
+    return _c("div", { staticClass: "form-group" }, [
+      _c("label", { attrs: { for: "datepicker" } }, [_vm._v("Date range:")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "input-group" }, [
+        _c("div", { staticClass: "input-group-prepend" }, [
+          _c("span", { staticClass: "input-group-text" }, [
+            _c("i", { staticClass: "far fa-calendar-alt" })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "form-control float-right date",
+          attrs: { type: "text", id: "datepicker" }
+        })
       ]),
       _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control float-right date",
-        attrs: { type: "text", id: "datepicker" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-prepend" }, [
-      _c("span", { staticClass: "input-group-text" }, [
-        _c("i", { staticClass: "far fa-hospital" })
+      _c("br"),
+      _vm._v(" "),
+      _c("label", { attrs: { for: "users-doctors-list" } }, [
+        _vm._v("Vaši zdravniki")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "input-group" }, [
+        _c("div", { staticClass: "input-group-prepend" }, [
+          _c("span", { staticClass: "input-group-text" }, [
+            _c("i", { staticClass: "far fa-hospital" })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("select", {
+          staticClass: "form-control float-right",
+          attrs: { name: "", id: "users-doctors-list" }
+        }),
+        _vm._v(" "),
+        _c("a", { staticClass: "btn btn-success", attrs: { href: "/admin" } }, [
+          _vm._v("Dodaj zdravnika "),
+          _c("i", { staticClass: "fa fa-plus" })
+        ])
       ])
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "btn btn-success", attrs: { href: "/admin" } },
-      [_vm._v("Dodaj zdravnika "), _c("i", { staticClass: "fa fa-plus" })]
-    )
   },
   function() {
     var _vm = this

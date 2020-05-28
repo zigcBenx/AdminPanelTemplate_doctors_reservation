@@ -11,6 +11,10 @@ class UserDoctorController extends Controller
 {
     public function addUserDoctor (Request $request) {
 //        abort_unless(\Gate::allows('user_create'), 403);
+        $user_doctor_exists = User_doctor::where('user_id',Auth::id())->where('doctor_id',$request->get('docId'))->count();
+        if($user_doctor_exists > 0) {
+            return 'exists';
+        }
         $doctorId = $request->get('docId');
         $workplace = $request->get('workplace');
         $newDoctor = new User_doctor;
@@ -25,5 +29,14 @@ class UserDoctorController extends Controller
     public function showUserDoctor (Request $request) {
         $doctors = User_doctor::where('user_id', Auth::id())->get();
         return $doctors;
+    }
+
+    public function getWorkplaceForDoctor(Request $request) {
+        $workplace = User_doctor::where('user_id',Auth::id())->where('doctor_id',$request->get('docId'))->count();
+        if($workplace < 1) {
+            return 'fail';
+        }
+
+        return $workplace;
     }
 }
