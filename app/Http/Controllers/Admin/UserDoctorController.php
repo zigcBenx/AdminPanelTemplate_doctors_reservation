@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\User_doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserDoctorController extends Controller
 {
@@ -32,8 +33,10 @@ class UserDoctorController extends Controller
     }
 
     public function getWorkplaceForDoctor(Request $request) {
-        $workplace = User_doctor::where('user_id',Auth::id())->where('doctor_id',$request->get('docId'))->count();
-        if($workplace < 1) {
+        // DB::enableQueryLog();
+        $workplace = User_doctor::where('user_id', Auth::id())->where('doctor_id',$request->request->get('docId'))->get();
+        // dd(DB::getQueryLog());
+        if($workplace->count() < 1) {
             return 'fail';
         }
 

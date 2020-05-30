@@ -35,18 +35,10 @@
                     </div>
 
                     <hr>
-                    <p>Ni možnih rezervacij za ta termin.</p>
-                    <div class="callout callout-info">
-                        <div class="row">
-                            <div class="col-8">
-                                <h5>Termin 1: Dohter Janez</h5>
-                            </div>
-                            <div class="col-4">
-                                <button type="button" class="btn btn-info btn-lg" style="float:right;">Naroči se</button>
-                            </div>
-                        </div>
-                        <p> OD DO PLACE</p>
-                    </div>
+                    <p id="no-termini" style="display:none;">Ni možnih rezervacij za ta termin.</p>
+
+                    <div id="free-termini"></div>
+
                 </div>
             </div>
         </div>
@@ -61,12 +53,14 @@
 
 <script>
     $(document).ready(function () {
+        // For initial display of termini
+        let displayDoctor = null;
+
         $.post('{{ route("admin.user-doctor-show") }}', {_token: "{{ csrf_token() }}"})
             .done( function(data) {
-                // prikaži proste termine za prvega dohterja?
-                showFreeSlots(data[0].doctor_id);
-
                 $('#users-doctors-list').html('');
+                displayDoctor = data[0].doctor_id;
+
                 for(let i = 0; i < data.length; i++) {
                     let doctorId = data[i].doctor_id;
                     fetch('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode='+doctorId+'&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType= browser (User-Agent): Mozilla/5.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife')
@@ -78,16 +72,53 @@
                         });
                 }
 
+                showFreeSlots(displayDoctor);
+
             });
+
+        $("#users-doctors-list").change(function(){
+            showFreeSlots($(this).val());
+        });
+
 
         function showFreeSlots(docId) {
             $.post('{{route('admin.get-work-place')}}', {_token: "{{ csrf_token() }}", docId:docId})
                 .done(function(data){
-                    alert(data);
+                    let workplaceOfselectedDoctor = data[0].workspace;
+                    fetch('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetFreeSlots?request.workplaceCode='+workplaceOfselectedDoctor+'&request.doctorIVZCode='+docId+'&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=browser (User-Agent): Mozilla/5.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife')
+                        .then( res => res.json())
+                        .then( res => {
+                            if(!res.IsSuccessful){
+                                alert("API error");
+                                return;
+                            }
+                            if(!res.FreeSlots.length){
+                                $("#no-termini").show();
+                                $("#free-termini").html('');
+                            }else{
+                                $("#no-termini").hide();
+                                $("#free-termini").html('');
+                                for (let i = 0; i < res.FreeSlots.length; i++) {
+                                    $("#free-termini").append(
+                                        '<div class="callout callout-info">\n' +
+                                        '                        <div class="row">\n' +
+                                        '                            <div class="col-4">\n' +
+                                        '                                <h5>'+$( "#users-doctors-list option:selected" ).text()+'</h5>\n' +
+                                        '                            </div>\n' +
+                                        '                            <div class="col-4">\n' +
+                                        '                                <p style="font-size:30px;">'+moment(res.FreeSlots[i].Start).format('H:mm')+" - "+moment(res.FreeSlots[i].End).format('H:mm')+'</p>' +
+                                        '                            </div>\n' +
+                                        '                            <div class="col-4">\n' +
+                                        '                                <button type="button" class="btn btn-info btn-lg" style="float:right;">Naroči se</button>\n' +
+                                        '                            </div>\n' +
+                                        '                        </div>' +
+                                        '                        <p>'+moment(res.FreeSlots[i].End).format('D.M.Y')+'</p>' +
+                                        '                    </div>');
+                                }
+                            }
+
+                        });
                 });
-            // from User_Doctor ->  check if authorized user has this doctor and in which workplace
-            //check free slots for this doctor for this workplace
-            //display them + button NAROČI SE
         }
     });
 </script>
