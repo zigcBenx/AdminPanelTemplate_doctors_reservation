@@ -85,6 +85,16 @@
                     </li>
                 @endcan
                 <li class="nav-item">
+                    <a href="/admin/reserve" class="nav-link">
+                        <p>
+                            <i class="fas fa-calendar-alt">
+
+                            </i>
+                            <span>Rezerviraj termin</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                         <p>
                             <i class="fas fa-sign-out-alt">

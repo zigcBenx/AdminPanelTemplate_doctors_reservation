@@ -6,7 +6,7 @@
                     <div class="card-header">Urejanje profila</div>
 
                     <div class="card-body">
-
+                        {{$user}}
                     	<div class="input-group">
 							<input type="text" class="form-control" placeholder="ZZZS številka">
 							<div class="input-group-append">
@@ -37,7 +37,7 @@
 								<div class="input-group-text"><i class="fas fa-at"></i></div>
 							</div>
 						</div>
-						<br>			
+						<br>
                     	<label>Telefon:</label>
                     	<div class="input-group">
 		                    <div class="input-group-prepend">

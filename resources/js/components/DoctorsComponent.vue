@@ -50,6 +50,11 @@
             showModal(){
                 $('#modal-doctor').modal('show');
 
+                // show only save button and hide others
+                $("#save-doctor-button").show();
+                $("#edit-doctor-button").hide();
+                $("#delete-doctor-button").hide();
+
                 // get doctor from select input
                 let selectedDoctorsName = $("#doctorsList option:selected").text().trim();
                 let selectedDoctorsId = $("#doctorsList option:selected").val();
@@ -101,13 +106,6 @@
             }
     	},
         mounted() {
-            // $.get('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=mozilla&request.client.applicationVersion=1.0', function(data,status){
-            // 	this.doctors = ['a','b'];
-            // 	console.log(data.Doctors);
-            // 	console.log(status);
-            // });
-
-			//this.doctors = ['d1','d2','d3'];
         }
     }
 </script>

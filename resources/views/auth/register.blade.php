@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" id="register-form">
                         @csrf
 
                         <div class="form-group row">
@@ -54,10 +54,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="zzzs" class="col-md-4 col-form-label text-md-right">{{ __('ZZZS number') }}</label>
+                            <label for="zzzs" class="col-md-4 col-form-label text-md-right">KZZ number</label>
 
                             <div class="col-md-6">
-                                <input id="zzzs" type="text" class="form-control{{ $errors->has('zzzs') ? ' is-invalid' : '' }}" name="zzzs" value="{{ old('phone') }}" required>
+                                <input id="zzzs" type="text" class="form-control{{ $errors->has('zzzs') ? ' is-invalid' : '' }}" name="zzzs" value="{{ old('zzzs') }}" required>
 
                                 @if ($errors->has('zzzs'))
                                     <span class="invalid-feedback" role="alert">
@@ -88,6 +88,7 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+                        <span class="failed_verify"></span>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

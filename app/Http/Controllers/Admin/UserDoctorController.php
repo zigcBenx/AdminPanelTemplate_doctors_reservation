@@ -42,4 +42,9 @@ class UserDoctorController extends Controller
 
         return $workplace;
     }
+
+    public function deleteDoctor (Request $request) {
+        User_doctor::where('user_id',Auth::id())->where('doctor_id',$request->request->get('docId'))->delete();
+        return 'OK';
+    }
 }

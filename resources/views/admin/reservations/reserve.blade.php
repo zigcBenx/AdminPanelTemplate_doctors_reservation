@@ -29,7 +29,6 @@
 						</span>
                             </div>
                             <select name="" id="users-doctors-list" class="form-control float-right" >
-
                             </select>
                             <a href="/admin" class="btn btn-success">Dodaj zdravnika <i class="fa fa-plus"></i></a>
                         </div>
@@ -66,7 +65,7 @@
             .done( function(data) {
                 $('#users-doctors-list').html('');
                 displayDoctor = data[0].doctor_id;
-
+                $("#users-doctors-list").append('<option>Izberi zdravnika</option>')
                 for(let i = 0; i < data.length; i++) {
                     let doctorId = data[i].doctor_id;
                     fetch('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode='+doctorId+'&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType= browser (User-Agent): Mozilla/5.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife')
@@ -77,8 +76,7 @@
                             $("#users-doctors-list").append('<option value="'+res.DoctorInfos[0].DoctorIVZCode+'">'+doctorsFirstName+' '+doctorsLastName+'</option>')
                         });
                 }
-
-                showFreeSlots(displayDoctor);
+                $('.loading').hide();
 
             });
 

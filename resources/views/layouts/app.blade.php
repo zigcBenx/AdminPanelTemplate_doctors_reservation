@@ -16,6 +16,29 @@
 
 <body class="header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden login-page">
     @yield('content')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#register-form").submit(function(e){
+                e.preventDefault();
+                let kzz = $('#zzzs').val();
+                let phone = $('#phone').val();
+                let email = $('#email').val();
+
+                fetch('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/VerifyPatientInfo?request.patient.kzzNumber='+kzz+'&request.patient.email='+email+'&request.patient.phone='+phone+'&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=browser&request.client.applicationVersion=1.22&request.client.applicationId=myXlife')
+                    .then( res => res.json())
+                    .then( res => {
+                        if(!res.IsSuccessful){
+                            let errorText = res.ErrorDescription;
+                            $('.failed_verify').html('<i style="color:red;">'+errorText.split(";").join("<br>")+'</i>');
+                            return;
+                        }
+                        $(this).submit();
+                    });
+
+            });
+        });
+    </script>
 </body>
 
 </html>

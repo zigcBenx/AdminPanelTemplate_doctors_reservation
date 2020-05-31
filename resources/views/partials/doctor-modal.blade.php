@@ -60,6 +60,8 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Zapri</button>
                 <input type="hidden" id="doctor-id">
                 <button type="button" class="btn btn-primary" id="save-doctor-button">Dodaj zdravnika</button>
+                <button type="button" class="btn btn-warning" id="edit-doctor-button">Uredi zdravnika</button>
+                <button type="button" class="btn btn-danger" id="delete-doctor-button">Izbriši zdravnika</button>
             </div>
         </div>
         <!-- /.modal-content -->
