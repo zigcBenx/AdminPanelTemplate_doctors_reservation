@@ -13,7 +13,8 @@
                         <div class="col-md-8">
                             <div class="card">
                                 <div class="card-header">Urejanje profila</div>
-                                <form action="{{route('admin.users-update')}}" method="POST">
+                                <!--{#route('admin.users-update')#}-->
+                                <form action="" method="POST">
                                     @csrf
                                     @method('POST')
                                 <div class="card-body">
