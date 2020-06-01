@@ -8,35 +8,36 @@
 
                     <div class="form-group">
 
-                        <label for="datepicker">Datum termina:</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-						<span class="input-group-text">
-							<i class="far fa-calendar-alt"></i>
-						</span>
-                            </div>
-                            <!--<input type="text" class="form-control float-right date" id="datepicker">-->
-                            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" />
-                        </div>
-                        <small>Če je datum prazen, se pokažejo vsi prosti termini.</small>
-                        <br>
-                        <br>
                         <label for="users-doctors-list">Vaši zdravniki:</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
-						<span class="input-group-text">
-							<i class="far fa-hospital"></i>
-						</span>
+                                <span class="input-group-text">
+                                    <i class="far fa-hospital"></i>
+                                </span>
                             </div>
+
                             <select name="" id="users-doctors-list" class="form-control float-right" >
                             </select>
                             <a href="/admin" class="btn btn-success">Dodaj zdravnika <i class="fa fa-plus"></i></a>
+                        </div>
+                        <br>
+                        <h5><i>Če je datum prazen, se pokažejo vsi prosti termini.</i></h5>
+                        <label for="datepicker">Datum termina:</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="far fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <!--<input type="text" class="form-control float-right date" id="datepicker">-->
+                            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" />
                         </div>
                         <!-- /.input group -->
                     </div>
 
                     <hr>
                     <p id="no-termini" style="display:none;">Ni možnih rezervacij za ta termin.</p>
+                    <p id="no-doctor" style="display:none;">Ni dodanih zdravnikov. Za rezervacijo termina morate najprej dodati zdravnika.</p>
 
                     <div id="free-termini">
                         <div class="loading" style="position:absolute; left:50%; top:0px;">
@@ -64,6 +65,11 @@
         $.post('{{ route("admin.user-doctor-show") }}', {_token: "{{ csrf_token() }}"})
             .done( function(data) {
                 $('#users-doctors-list').html('');
+                if(data.length == 0){
+                    $('.loading').hide();
+                    $("#no-doctor").show();
+                    return;
+                }
                 displayDoctor = data[0].doctor_id;
                 $("#users-doctors-list").append('<option>Izberi zdravnika</option>')
                 for(let i = 0; i < data.length; i++) {

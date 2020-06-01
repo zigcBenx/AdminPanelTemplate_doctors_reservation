@@ -78,7 +78,6 @@
          */
         $.post('{{ route("admin.user-doctor-show") }}', {_token: "{{ csrf_token() }}"})
             .done(function(data){
-                console.log(data);
 
                 $('#users-doctors-list').html('');
                 $('#users-doctors-list').append("<ul>");
@@ -108,11 +107,11 @@
                 .done(function(data){
                     $('#modal-doctor').modal('hide');
                     if(data == 'exists'){
-                        alert('Ta doktor je že dodan.', 'Napaka');
+                        alert('Ta zdravnik je že dodan.', 'Napaka');
                         return;
                     }
                     $('#modal-doctor').modal('hide');
-                    alert("Doktor uspešno dodan", 'Uspešno');
+                    alert("Zdravnik uspešno dodan", 'Uspešno');
                     location.reload(); // TODO: instead of this do async refresh
                 });
             });
