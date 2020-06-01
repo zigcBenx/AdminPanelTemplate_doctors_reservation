@@ -1929,128 +1929,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TerminiComponent.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TerminiComponent.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      termini: {
-        "FreeSlots": [{
-          "SlotId": 0,
-          "Start": "2020-05-23T15:35:44.049Z",
-          "End": "2020-05-23T16:35:44.049Z"
-        }, {
-          "SlotId": 1,
-          "Start": "2020-05-23T16:35:44.049Z",
-          "End": "2020-05-23T17:35:44.049Z"
-        }, {
-          "SlotId": 2,
-          "Start": "2020-05-23T17:35:44.049Z",
-          "End": "2020-05-23T18   :35:44.049Z"
-        }],
-        "IsSuccessful": true,
-        "ErrorCode": "string",
-        "ErrorDescription": "string"
-      },
-      doctors: [] // value from select
-
-    };
-  },
-  created: function created() {// this.getUsersDoctors();
-  },
-  methods: {// getUsersDoctors(){
-    //     fetch('/admin/user-doctor-show', {_token: "{{ csrf_token() }}"})
-    //
-    //         .then( res => {
-    //             console.log(res);
-    //             // $('#users-doctors-list').html('');
-    //             // for(let i = 0; i < data.length; i++) {
-    //             //     let doctorId = data[i].doctor_id;
-    //             //     fetch('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode='+doctorId+'&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType= browser (User-Agent): Mozilla/5.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife')
-    //             //         .then( res => res.json())
-    //             //         .then( res => {
-    //             //             let doctorsFirstName = res.DoctorInfos[0].DoctorFirstName;
-    //             //             let doctorsLastName = res.DoctorInfos[0].DoctorLastName;
-    //             //             console.log(res.DoctorInfos[0].DoctorFirstName)
-    //             //             // $('#users-doctors-list').option("<b>" + doctorsFirstName + " " + doctorsLastName + "</b>,");
-    //             //         });
-    //             // }
-    //
-    //         });
-    // },
-
-    /*fetchFreeSlots(){
-        fetch('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=mozilla&request.client.applicationVersion=1.0')
-            .then( res => res.json())
-            .then( res => {
-                this.doctors = res.Doctors;
-            })
-    }*/
-  },
-  mounted: function mounted() {// $.get('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=mozilla&request.client.applicationVersion=1.0', function(data,status){
-    // 	this.doctors = ['a','b'];
-    // 	console.log(data.Doctors);
-    // 	console.log(status);
-    // });
-    //this.doctors = ['d1','d2','d3'];
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/is-buffer/index.js":
 /*!*****************************************!*\
   !*** ./node_modules/is-buffer/index.js ***!
@@ -19685,7 +19563,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "inner" }, [
             _c("h4", [_c("b", [_vm._v("Rezerviraj termin")])]),
             _vm._v(" "),
-            _c("p", [_vm._v("Pogled v koledarju")])
+            _c("p", [_vm._v("Pogled prostih terminov v koledarju.")])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "icon" }, [
@@ -19711,7 +19589,7 @@ var staticRenderFns = [
           _c("div", { staticClass: "inner" }, [
             _c("h4", [_c("b", [_vm._v("Pretekli pregledi")])]),
             _vm._v(" "),
-            _c("p", [_vm._v("Zgodovina vaših pregledov pri ...")])
+            _c("p", [_vm._v("Zgodovina vaših pregledov.")])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "icon" }, [
@@ -20116,121 +19994,6 @@ var staticRenderFns = [
         _c("div", { staticClass: "input-group-text" }, [
           _c("i", { staticClass: "fas fa-telephone" })
         ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TerminiComponent.vue?vue&type=template&id=d3554060&":
-/*!*******************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/TerminiComponent.vue?vue&type=template&id=d3554060& ***!
-  \*******************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "termini" },
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("hr"),
-      _vm._v(" "),
-      _c("p", [_vm._v("Ni možnih rezervacij za ta termin.")]),
-      _vm._v(" "),
-      _vm._l(_vm.termini.FreeSlots, function(termin) {
-        return _c(
-          "div",
-          { key: termin.SlotId, staticClass: "callout callout-info" },
-          [
-            _vm._m(1, true),
-            _vm._v(" "),
-            _c("p", [_vm._v(_vm._s(termin.End) + " - " + _vm._s(termin.Start))])
-          ]
-        )
-      })
-    ],
-    2
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "datepicker" } }, [_vm._v("Date range:")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "input-group" }, [
-        _c("div", { staticClass: "input-group-prepend" }, [
-          _c("span", { staticClass: "input-group-text" }, [
-            _c("i", { staticClass: "far fa-calendar-alt" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control float-right date",
-          attrs: { type: "text", id: "datepicker" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("label", { attrs: { for: "users-doctors-list" } }, [
-        _vm._v("Vaši zdravniki")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "input-group" }, [
-        _c("div", { staticClass: "input-group-prepend" }, [
-          _c("span", { staticClass: "input-group-text" }, [
-            _c("i", { staticClass: "far fa-hospital" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("select", {
-          staticClass: "form-control float-right",
-          attrs: { name: "", id: "users-doctors-list" }
-        }),
-        _vm._v(" "),
-        _c("a", { staticClass: "btn btn-success", attrs: { href: "/admin" } }, [
-          _vm._v("Dodaj zdravnika "),
-          _c("i", { staticClass: "fa fa-plus" })
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-8" }, [
-        _c("h5", [_vm._v("Termin 1: Dohter Janez")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-4" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-info btn-lg",
-            staticStyle: { float: "right" },
-            attrs: { type: "button" }
-          },
-          [_vm._v("Naroči se")]
-        )
       ])
     ])
   }
@@ -32406,7 +32169,6 @@ Vue.component('example-component', __webpack_require__(/*! ./components/ExampleC
 Vue.component('doctors-component', __webpack_require__(/*! ./components/DoctorsComponent.vue */ "./resources/js/components/DoctorsComponent.vue")["default"]);
 Vue.component('hospital-component', __webpack_require__(/*! ./components/HospitalComponent.vue */ "./resources/js/components/HospitalComponent.vue")["default"]);
 Vue.component('actions-component', __webpack_require__(/*! ./components/ActionsComponent.vue */ "./resources/js/components/ActionsComponent.vue")["default"]);
-Vue.component('termini-component', __webpack_require__(/*! ./components/TerminiComponent.vue */ "./resources/js/components/TerminiComponent.vue")["default"]);
 Vue.component('profile-edit-component', __webpack_require__(/*! ./components/ProfileEditComponent.vue */ "./resources/js/components/ProfileEditComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -32808,75 +32570,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileEditComponent_vue_vue_type_template_id_12c446d5___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileEditComponent_vue_vue_type_template_id_12c446d5___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./resources/js/components/TerminiComponent.vue":
-/*!******************************************************!*\
-  !*** ./resources/js/components/TerminiComponent.vue ***!
-  \******************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _TerminiComponent_vue_vue_type_template_id_d3554060___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TerminiComponent.vue?vue&type=template&id=d3554060& */ "./resources/js/components/TerminiComponent.vue?vue&type=template&id=d3554060&");
-/* harmony import */ var _TerminiComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TerminiComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/TerminiComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _TerminiComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _TerminiComponent_vue_vue_type_template_id_d3554060___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _TerminiComponent_vue_vue_type_template_id_d3554060___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/TerminiComponent.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/TerminiComponent.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/TerminiComponent.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TerminiComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./TerminiComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TerminiComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TerminiComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/components/TerminiComponent.vue?vue&type=template&id=d3554060&":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/components/TerminiComponent.vue?vue&type=template&id=d3554060& ***!
-  \*************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TerminiComponent_vue_vue_type_template_id_d3554060___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./TerminiComponent.vue?vue&type=template&id=d3554060& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/TerminiComponent.vue?vue&type=template&id=d3554060&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TerminiComponent_vue_vue_type_template_id_d3554060___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TerminiComponent_vue_vue_type_template_id_d3554060___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use App\User_doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,5 +47,10 @@ class UserDoctorController extends Controller
     public function deleteDoctor (Request $request) {
         User_doctor::where('user_id',Auth::id())->where('doctor_id',$request->request->get('docId'))->delete();
         return 'OK';
+    }
+
+    public function userUpdate(Request $request) {
+        User::where('id',Auth::id())->update($request->only(['zzzs', 'name', 'email', 'phone']));
+        return redirect()->route('admin.home');
     }
 }

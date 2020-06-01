@@ -36,4 +36,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::post('get-work-place','UserDoctorController@getWorkplaceForDoctor')->name('get-work-place');
     Route::post('delete-doctor','UserDoctorController@deleteDoctor')->name('delete-doctor');
+
+    Route::post('users-update', 'UserDoctorController@userUpdate')->name('users-update');
 });

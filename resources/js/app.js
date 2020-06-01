@@ -24,7 +24,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('doctors-component', require('./components/DoctorsComponent.vue').default);
 Vue.component('hospital-component', require('./components/HospitalComponent.vue').default);
 Vue.component('actions-component', require('./components/ActionsComponent.vue').default);
-Vue.component('termini-component', require('./components/TerminiComponent.vue').default);
 Vue.component('profile-edit-component', require('./components/ProfileEditComponent.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to

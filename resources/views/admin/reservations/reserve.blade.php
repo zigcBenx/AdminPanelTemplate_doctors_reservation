@@ -8,7 +8,7 @@
 
                     <div class="form-group">
 
-                        <label for="datepicker">Date range:</label>
+                        <label for="datepicker">Datum termina:</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
 						<span class="input-group-text">
@@ -21,7 +21,7 @@
                         <small>Če je datum prazen, se pokažejo vsi prosti termini.</small>
                         <br>
                         <br>
-                        <label for="users-doctors-list">Vaši zdravniki</label>
+                        <label for="users-doctors-list">Vaši zdravniki:</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
 						<span class="input-group-text">
@@ -49,7 +49,7 @@
         </div>
     </div>
 </div>
-
+@include('partials.reserve-modal')
 @endsection
 
 
@@ -127,7 +127,7 @@
                                             '                                <p style="font-size:30px;">' + moment(res.FreeSlots[i].Start).format('H:mm') + " - " + moment(res.FreeSlots[i].End).format('H:mm') + '</p>' +
                                             '                            </div>\n' +
                                             '                            <div class="col-4">\n' +
-                                            '                                <button type="button" class="btn btn-info btn-lg" style="float:right;">Naroči se</button>\n' +
+                                            '                                <button type="button" data-from="'+res.FreeSlots[i].Start+'" data-to="'+res.FreeSlots[i].End+'" id="'+res.FreeSlots[i].SlotId+'" class="btn btn-info btn-lg reserve-button" style="float:right;">Naroči se</button>\n' +
                                             '                            </div>\n' +
                                             '                        </div>' +
                                             '                        <p>' + moment(res.FreeSlots[i].End).format('D.M.Y') + '</p>' +
@@ -143,6 +143,30 @@
                         });
                 });
         }
+
+        /***
+         * Submitting reservation of termin
+         *
+         **/
+        $('#reserveTermin').click(function(){
+            alert($(this).attr('id'));
+        });
+    });
+
+    /**
+     * Open modal when trying to reserve termin
+     */
+    $('body').on('click','.reserve-button',function(){
+
+        let terminFrom = $(this).data('from');
+        let terminTo = $(this).data('to');
+        let terminId = $(this).attr('id');
+        let doctorName = $("#users-doctors-list option:selected").text();
+/// zakaj se lahko termin spreminja ne more se pa faking jeben id od termina
+        $('#reserveTermin').prop('id',terminId);
+        $('#doctor_name').html(doctorName);
+        $('#termin_name').html(moment(terminFrom).format('H:mm') + ' - ' + moment(terminTo).format('H:mm'));
+        $('#reserve-modal').modal('show');
     });
 </script>
 @endsection

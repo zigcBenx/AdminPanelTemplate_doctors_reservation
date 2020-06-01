@@ -12,12 +12,12 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="{{ route('admin.home') }}" class="nav-link">
+                    <a href="{{ route('admin.home') }}" class="nav-link {{ request()->is('admin') || request()->is('admin') ? 'active' : '' }}">
                         <p>
-                            <i class="fas fa-tachometer-alt">
+                            <i class="fas fa-home">
 
                             </i>
-                            <span>{{ trans('global.dashboard') }}</span>
+                            <span>Domov</span>
                         </p>
                     </a>
                 </li>
@@ -74,7 +74,7 @@
                 @endcan
                 @can('reservation_control_access')
                     <li class="nav-item">
-                        <a href="{{ route('admin.reservations_control.show') }}" class="nav-link {{ request()->is('admin/reservations') || request()->is('admin/reservations/*') ? 'active' : '' }}">
+                        <a href="{{ route('admin.reservations_control.show') }}" class="nav-link {{ request()->is('admin/reserve') || request()->is('admin/reserve/*') ? 'active' : '' }}">
                             <i class="fas fa-calendar">
 
                             </i>
@@ -85,7 +85,7 @@
                     </li>
                 @endcan
                 <li class="nav-item">
-                    <a href="/admin/reserve" class="nav-link">
+                    <a href="/admin/reserve" class="nav-link {{ request()->is('admin/reserve') || request()->is('admin/reserve/*') ? 'active' : '' }}">
                         <p>
                             <i class="fas fa-calendar-alt">
 
@@ -95,12 +95,22 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="/admin/reserve" class="nav-link">
+                        <p>
+                            <i class="fa fa-stethoscope">
+
+                            </i>
+                            <span>V laboratorij</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                         <p>
                             <i class="fas fa-sign-out-alt">
 
                             </i>
-                            <span>{{ trans('global.logout') }}</span>
+                            <span>Odjava</span>
                         </p>
                     </a>
                 </li>

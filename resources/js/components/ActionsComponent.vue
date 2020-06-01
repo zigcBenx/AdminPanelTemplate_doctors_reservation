@@ -6,7 +6,7 @@
               <div class="inner">
                 <h4><b>Rezerviraj termin</b></h4>
 
-                <p>Pogled v koledarju</p>
+                <p>Pogled prostih terminov v koledarju.</p>
               </div>
               <div class="icon">
                 <i class="fas fa-calendar-alt"></i>
@@ -21,7 +21,7 @@
               <div class="inner">
                 <h4><b>Pretekli pregledi</b></h4>
 
-                <p>Zgodovina vaših pregledov pri ...</p>
+                <p>Zgodovina vaših pregledov.</p>
               </div>
               <div class="icon">
                 <i class="fas fa-hospital"></i>

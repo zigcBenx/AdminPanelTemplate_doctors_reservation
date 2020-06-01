@@ -14,7 +14,7 @@
                             <div class="card">
                                 <div class="card-header">Urejanje profila</div>
                                 <!--{#route('admin.users-update')#}-->
-                                <form action="" method="POST">
+                                <form action="{{route('admin.users-update')}}" method="POST">
                                     @csrf
                                     @method('POST')
                                 <div class="card-body">
@@ -53,7 +53,7 @@
                                         </div>
                                     </div>
                                     <br>
-                                    <button type="button" class="btn btn-block btn-outline-success btn-md" style="max-width:200px;">Shrani</button>
+                                    <button type="submit" class="btn btn-block btn-outline-success btn-md" style="max-width:200px;">Shrani</button>
                                 </div>
                                 </form>
                             </div>

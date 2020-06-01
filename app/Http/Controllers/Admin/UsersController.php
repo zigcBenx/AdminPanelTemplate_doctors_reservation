@@ -85,9 +85,4 @@ class UsersController extends Controller
 
         return response(null, 204);
     }
-
-    public function userUpdate(Request $request) {
-        User:$this->update($request->all());
-        return redirect('admin.home');
-    }
 }
