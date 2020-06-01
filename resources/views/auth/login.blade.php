@@ -20,21 +20,21 @@
                 {{ csrf_field() }}
                 <div class="form-group has-feedback">
                     <div class="input-group">
-                        <input type="email" class="form-control" placeholder="{{ trans('global.login_email') }}" name="email">
+                        <input type="email" class="form-control" placeholder="E-pošta" name="email">
                     </div>
                 </div>
                 <div class="form-group has-feedback">
                     <div class="input-group">
-                        <input type="password" class="form-control" placeholder="{{ trans('global.login_password') }}" name="password">
+                        <input type="password" class="form-control" placeholder="Geslo" name="password">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-8">
-                        <input type="checkbox" name="remember"> {{ trans('global.remember_me') }}
+                        <input type="checkbox" name="remember"> Ostani prijavljen
                     </div>
                     <!-- /.col -->
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block btn-flat">{{ trans('global.login') }}</button>
+                        <button type="submit" class="btn btn-primary btn-block btn-flat">Prijava</button>
                     </div>
                     <!-- /.col -->
                 </div>
@@ -43,12 +43,12 @@
 
 
             <p class="mb-1">
-                <a class="" href="{{ route('password.request') }}">
-                    {{ trans('global.forgot_password') }}
-                </a>
+{{--                <a class="" href="{{ route('password.request') }}">--}}
+{{--                    Pozabljeno geslo--}}
+{{--                </a>--}}
                 <br>
                 <a class="" href="{{ route('register') }}">
-                    {{ trans('global.registration') }}
+                    Nov uporabnik? Registriraj se.
                 </a>
             </p>
             <p class="mb-0">
