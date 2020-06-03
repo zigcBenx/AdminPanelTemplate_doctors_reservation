@@ -19,7 +19,8 @@ class HomeController
     }
 
     public function reserve() {
-    	return view('admin.reservations.reserve');
+        $user = Auth::user();
+    	return view('admin.reservations.reserve')->with(compact('user'));
     }
 
     public function recepti() {

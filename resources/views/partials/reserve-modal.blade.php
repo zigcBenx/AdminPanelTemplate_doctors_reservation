@@ -19,10 +19,13 @@
                 </div>
                 <div class="form-group">
                     <label for="pripomba">Pripombe:</label>
-                    <textarea class="form-control" name="" id="pripomba" cols="8" rows="1"></textarea>
+                    <textarea class="form-control" name="" id="pripomba" cols="8" rows="1" placeholder="Tukaj vnesite morebitne pripombe ..."></textarea>
 {{--                    <i>Priloge</i>--}}
                 </div>
             </div>
+            <input type="hidden" id="user_kzz" value="{{$user->zzzs}}">
+            <input type="hidden" id="user_phone" value="{{$user->phone}}">
+            <input type="hidden" id="user_mail" value="{{$user->email}}">
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-warning" data-dismiss="modal">Zapri</button>
                 <button type="button" class="btn btn-success" id="reserveTermin">Rezerviraj</button>

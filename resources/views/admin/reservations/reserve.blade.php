@@ -155,7 +155,57 @@
          *
          **/
         $('#reserveTermin').click(function(){
-            alert($(this).attr('id'));
+            let slotId = $(this).data('id');
+            let terminFrom = $(this).data('from');
+            let terminTo = $(this).data('to');
+            let userMail = $('#user_mail').val();
+            let userPhone = $('#user_phone').val();
+            let userKzz = $('#user_kzz').val();
+            $.post('{{route('admin.get-work-place')}}', {_token: "{{ csrf_token() }}", docId:$("#users-doctors-list").val()})
+                .done(function(data) {
+                    let workplaceOfselectedDoctor = data[0].workspace;
+                    let dataToSend =
+                        {
+                            "Patient": {
+                                "KzzNumber": userKzz,
+                                "Email": userMail,
+                                "Phone": userPhone,
+                            },
+                            "Slot": {
+                                "SlotId": slotId,
+                                "Start": terminFrom+'.520Z',
+                                "End": terminTo+'.520Z',
+                            },
+                            "Comment": "string",
+                            "Attachments": [
+                                // {
+                                //     "Name": "string",
+                                //     "Content": "string",
+                                //     "Comment": "string"
+                                // },
+                            ],
+                            "WorkplaceCode": workplaceOfselectedDoctor,
+                            "DoctorIVZCode": $("#users-doctors-list").val(),
+                            "ProviderZZZSNumber": "102320",// fixed on trbovlje only,
+
+                            "Client": {
+                                "UniqueDeviceId": "A3DE534DB",
+                                "ClientType": "browser (User-Agent)",
+                                "ApplicationVersion": "1.22",
+                                "ApplicationId": "myXlife"
+                            }
+                        };
+
+                    $.post("https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/BookSlot",dataToSend)
+                    .done(function(data){
+                        if(!data.isSuccessful){
+                            console.log(data);
+                            alert(data.ErrorDescription);
+                            return;
+                        }
+                        alert("Termin je uspešno rezerviran.");
+                    });
+                });
         });
     });
 
@@ -168,8 +218,10 @@
         let terminTo = $(this).data('to');
         let terminId = $(this).attr('id');
         let doctorName = $("#users-doctors-list option:selected").text();
-/// zakaj se lahko termin spreminja ne more se pa faking jeben id od termina
-        $('#reserveTermin').prop('id',terminId);
+
+        $('#reserveTermin').data('id',terminId);
+        $('#reserveTermin').data('from',terminFrom);
+        $('#reserveTermin').data('to',terminTo);
         $('#doctor_name').html(doctorName);
         $('#termin_name').html(moment(terminFrom).format('H:mm') + ' - ' + moment(terminTo).format('H:mm'));
         $('#reserve-modal').modal('show');
