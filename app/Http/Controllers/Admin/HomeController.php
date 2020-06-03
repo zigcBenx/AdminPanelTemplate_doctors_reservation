@@ -24,7 +24,8 @@ class HomeController
     }
 
     public function recepti() {
-        return view('admin.recepti');
+        $user = Auth::user();
+        return view('admin.recepti')->with(compact('user'));
     }
 
     public function pregledi() {

@@ -173,17 +173,17 @@
                             },
                             "Slot": {
                                 "SlotId": slotId,
-                                "Start": terminFrom+'.520Z',
-                                "End": terminTo+'.520Z',
+                                "Start": terminFrom,
+                                "End": terminTo,
                             },
                             "Comment": "string",
-                            "Attachments": [
-                                // {
-                                //     "Name": "string",
-                                //     "Content": "string",
-                                //     "Comment": "string"
-                                // },
-                            ],
+                            // "Attachments": [
+                            //     {
+                            //         "Name": "Name",
+                            //         "Content": "0",
+                            //         "Comment": "Comment"
+                            //     },
+                            // ],
                             "WorkplaceCode": workplaceOfselectedDoctor,
                             "DoctorIVZCode": $("#users-doctors-list").val(),
                             "ProviderZZZSNumber": "102320",// fixed on trbovlje only,

@@ -105,6 +105,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="/admin/recepti" class="nav-link {{ request()->is('admin/recepti') || request()->is('admin/recepti/*') ? 'active' : '' }}">
+                        <p>
+                            <i class="fas fa-receipt">
+
+                            </i>
+                            <span>Izdaja receptov</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
                         <p>
                             <i class="fas fa-sign-out-alt">
