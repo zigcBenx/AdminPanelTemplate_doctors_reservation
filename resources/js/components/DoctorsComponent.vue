@@ -29,11 +29,23 @@
 </template>
 
 <script>
+    /**
+     *
+     * YOUUU ALOOO
+     * Tale API moreš drugič uporabljat curl -X GET "https://durs.comtrade.com/ctNarocanje/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=browser&request.client.applicationVersion=1.22&request.client.applicationId=myXlife" -H  "accept: application/json"
+     * !!! tro jes dejasnko testni od comtrada tist je biu pa od zd trbovlje
+     *
+     *
+     *
+     *
+     *
+     */
     export default {
     	data(){
     		return {
     			doctors : [],
                 doctorInfo: null,
+                link: 'https://durs.comtrade.com/ctNarocanje', // https://enarocanje-gw1.comtrade.com/ctNarocanjeTest
     		}
     	},
     	created(){
@@ -41,7 +53,7 @@
     	},
     	methods: {
     		fetchDoctors(){
-    			fetch('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=mozilla&request.client.applicationVersion=1.0')
+    			fetch(this.link + '/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=mozilla&request.client.applicationVersion=1.0')
     			.then( res => res.json())
     			.then( res => {
     				this.doctors = res.Doctors;
@@ -58,8 +70,9 @@
                 // get doctor from select input
                 let selectedDoctorsName = $("#doctorsList option:selected").text().trim();
                 let selectedDoctorsId = $("#doctorsList option:selected").val();
-                // get Doctor data
-                fetch('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode='+selectedDoctorsId+'&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType= browser (User-Agent): Mozilla/5.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife')
+                // get Doctor data https://durs.comtrade.com
+                //https://enarocanje-gw1.comtrade.com
+                fetch(this.link + '/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode='+selectedDoctorsId+'&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType= browser (User-Agent): Mozilla/5.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife')
                 .then( res => res.json())
                 .then( res => {
                     this.doctorInfo = res.DoctorInfos;
