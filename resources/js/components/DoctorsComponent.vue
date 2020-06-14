@@ -49,7 +49,7 @@
     		}
     	},
     	created(){
-    		this.fetchDoctors()
+    		// fetch doctors was here before
     	},
     	methods: {
     		fetchDoctors(){
@@ -124,6 +124,8 @@
             }
     	},
         mounted() {
+    	    console.log("fetching doczors");
+            this.fetchDoctors(); // before was in created
         }
     }
 </script>

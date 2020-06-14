@@ -1812,8 +1812,7 @@ __webpack_require__.r(__webpack_exports__);
 
     };
   },
-  created: function created() {
-    this.fetchDoctors();
+  created: function created() {// fetch doctors was here before
   },
   methods: {
     fetchDoctors: function fetchDoctors() {
@@ -1885,7 +1884,10 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    console.log("fetching doczors");
+    this.fetchDoctors(); // before was in created
+  }
 });
 
 /***/ }),
