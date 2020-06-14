@@ -53,7 +53,7 @@
     	},
     	methods: {
     		fetchDoctors(){
-    			fetch('https://durs.comtrade.com/ctNarocanje/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=browser&request.client.applicationVersion=1.22&request.client.applicationId=myXlife')
+    			fetch('https://durs.comtrade.com/ctNarocanje/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=browser&request.client.applicationVersion=1.22&request.client.applicationId=myXlife',{mode:'cors'})
     			.then( res => res.json())
     			.then( res => {
     			    console.log("SUCCESS:");
@@ -124,7 +124,6 @@
             }
     	},
         mounted() {
-    	    console.log("fetching doczors");
             this.fetchDoctors(); // before was in created
         }
     }
