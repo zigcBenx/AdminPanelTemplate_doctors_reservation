@@ -1822,10 +1822,11 @@ __webpack_require__.r(__webpack_exports__);
       fetch('https://durs.comtrade.com/ctNarocanje/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=browser&request.client.applicationVersion=1.22&request.client.applicationId=myXlife').then(function (res) {
         return res.json();
       }).then(function (res) {
+        console.log("SUCCESS:");
         console.log(res);
         _this.doctors = res.Doctors;
       })["catch"](function (error) {
-        console.log("Error:");
+        console.log("FUCK YOU:");
         console.log(error);
       });
     },

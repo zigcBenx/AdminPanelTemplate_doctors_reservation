@@ -3,7 +3,6 @@
 <div class="content">
     <div class="row">
         <div class="col-lg-12">
-            <div id="krnekTest"></div>
         	<div class="container">
 	        	<actions-component></actions-component>
 	        	<hr>
@@ -73,14 +72,6 @@
 <script>
 
     $(document).ready(function(){
-
-
-
-        $.get('https://durs.comtrade.com/ctNarocanje/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=browser&request.client.applicationVersion=1.22&request.client.applicationId=myXlife',
-        function(data){
-            console.log(data);
-            $("#krnekTest").html(data);
-        });
         /**
          * script for showing users doctors
          */
