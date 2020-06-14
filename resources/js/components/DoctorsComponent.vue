@@ -53,15 +53,15 @@
     	},
     	methods: {
     		fetchDoctors(){
-    			fetch('https://durs.comtrade.com/ctNarocanje/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:75.0) Gecko/20100101 Firefox/75.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife',{mode:'cors'})
+    			fetch('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:75.0) Gecko/20100101 Firefox/75.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife',{mode:'cors'})
     			.then( res => res.json())
     			.then( res => {
-    			    console.log("SUCCESS:");
-    			    console.log(res);
+    			    //console.log("SUCCESS:");
+    			    //console.log(res);
     				this.doctors = res.Doctors;
     			}).catch(function(error) {
-    			    console.log("FUCK YOU:");
-                    console.log(error);
+    			    //console.log("FUCK YOU:");
+                    //console.log(error);
                 });
     		},
             showModal(){
@@ -77,7 +77,7 @@
                 let selectedDoctorsId = $("#doctorsList option:selected").val();
                 // get Doctor data https://durs.comtrade.com
                 //https://enarocanje-gw1.comtrade.com
-                fetch('https://durs.comtrade.com/ctNarocanje/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode='+selectedDoctorsId+'&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:75.0) Gecko/20100101 Firefox/75.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife')
+                fetch('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode='+selectedDoctorsId+'&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:75.0) Gecko/20100101 Firefox/75.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife')
                 .then( res => res.json())
                 .then( res => {
                     this.doctorInfo = res.DoctorInfos;
