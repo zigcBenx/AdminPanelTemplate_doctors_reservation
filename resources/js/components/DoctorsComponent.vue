@@ -56,8 +56,10 @@
     			fetch('https://durs.comtrade.com/ctNarocanje/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=browser&request.client.applicationVersion=1.22&request.client.applicationId=myXlife')
     			.then( res => res.json())
     			.then( res => {
+    			    console.log(res);
     				this.doctors = res.Doctors;
     			}).catch(function(error) {
+    			    console.log("Error:");
                     console.log(error);
                 });
     		},
