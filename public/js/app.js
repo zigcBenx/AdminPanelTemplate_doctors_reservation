@@ -1823,6 +1823,8 @@ __webpack_require__.r(__webpack_exports__);
         return res.json();
       }).then(function (res) {
         _this.doctors = res.Doctors;
+      })["catch"](function (error) {
+        console.log(error);
       });
     },
     showModal: function showModal() {

@@ -57,7 +57,9 @@
     			.then( res => res.json())
     			.then( res => {
     				this.doctors = res.Doctors;
-    			})
+    			}).catch(function(error) {
+                    console.log(error);
+                });
     		},
             showModal(){
                 $('#modal-doctor').modal('show');
