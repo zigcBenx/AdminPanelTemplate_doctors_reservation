@@ -53,7 +53,7 @@
     	},
     	methods: {
     		fetchDoctors(){
-    			fetch(this.link + '/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=mozilla&request.client.applicationVersion=1.0')
+    			fetch('https://durs.comtrade.com/ctNarocanje/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=mozilla&request.client.applicationVersion=1.0')
     			.then( res => res.json())
     			.then( res => {
     				this.doctors = res.Doctors;
@@ -72,7 +72,7 @@
                 let selectedDoctorsId = $("#doctorsList option:selected").val();
                 // get Doctor data https://durs.comtrade.com
                 //https://enarocanje-gw1.comtrade.com
-                fetch(this.link + '/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode='+selectedDoctorsId+'&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType= browser (User-Agent): Mozilla/5.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife')
+                fetch('https://durs.comtrade.com/ctNarocanje/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode='+selectedDoctorsId+'&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType= browser (User-Agent): Mozilla/5.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife')
                 .then( res => res.json())
                 .then( res => {
                     this.doctorInfo = res.DoctorInfos;
