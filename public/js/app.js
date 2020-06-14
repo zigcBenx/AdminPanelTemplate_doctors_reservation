@@ -1791,11 +1791,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
+/**
+ *
+ * YOUUU ALOOO
+ * Tale API moreš drugič uporabljat curl -X GET "https://durs.comtrade.com/ctNarocanje/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=browser&request.client.applicationVersion=1.22&request.client.applicationId=myXlife" -H  "accept: application/json"
+ * !!! tro jes dejasnko testni od comtrada tist je biu pa od zd trbovlje
+ *
+ *
+ *
+ *
+ *
+ */
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       doctors: [],
-      doctorInfo: null
+      doctorInfo: null,
+      link: 'https://durs.comtrade.com/ctNarocanje' // https://enarocanje-gw1.comtrade.com/ctNarocanjeTest
+
     };
   },
   created: function created() {
@@ -1805,7 +1819,7 @@ __webpack_require__.r(__webpack_exports__);
     fetchDoctors: function fetchDoctors() {
       var _this = this;
 
-      fetch('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=mozilla&request.client.applicationVersion=1.0').then(function (res) {
+      fetch(this.link + '/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=mozilla&request.client.applicationVersion=1.0').then(function (res) {
         return res.json();
       }).then(function (res) {
         _this.doctors = res.Doctors;
@@ -1821,9 +1835,10 @@ __webpack_require__.r(__webpack_exports__);
       $("#delete-doctor-button").hide(); // get doctor from select input
 
       var selectedDoctorsName = $("#doctorsList option:selected").text().trim();
-      var selectedDoctorsId = $("#doctorsList option:selected").val(); // get Doctor data
+      var selectedDoctorsId = $("#doctorsList option:selected").val(); // get Doctor data https://durs.comtrade.com
+      //https://enarocanje-gw1.comtrade.com
 
-      fetch('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode=' + selectedDoctorsId + '&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType= browser (User-Agent): Mozilla/5.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife').then(function (res) {
+      fetch(this.link + '/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode=' + selectedDoctorsId + '&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType= browser (User-Agent): Mozilla/5.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife').then(function (res) {
         return res.json();
       }).then(function (res) {
         _this2.doctorInfo = res.DoctorInfos; // set doctor id to form input
