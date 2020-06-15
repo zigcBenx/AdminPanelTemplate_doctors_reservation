@@ -1823,11 +1823,12 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         return res.json();
       }).then(function (res) {
-        //console.log("SUCCESS:");
-        //console.log(res);
+        console.log("SUCCESS:");
+        console.log(res);
         _this.doctors = res.Doctors;
-      })["catch"](function (error) {//console.log("FUCK YOU:");
-        //console.log(error);
+      })["catch"](function (error) {
+        console.log("ERROR:");
+        console.log(error);
       });
     },
     showModal: function showModal() {
