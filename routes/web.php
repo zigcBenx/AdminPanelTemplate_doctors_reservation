@@ -38,4 +38,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('delete-doctor','UserDoctorController@deleteDoctor')->name('delete-doctor');
 
     Route::post('users-update', 'UserDoctorController@userUpdate')->name('users-update');
+
+    Route::get('api-get-doctors', 'ApiController@getDoctors')->name('api-get-doctors');
 });
