@@ -1821,17 +1821,13 @@ __webpack_require__.r(__webpack_exports__);
       fetch('/admin/api-get-doctors').then(function (res) {
         return res.json();
       }).then(function (res) {
-        console.log("SUCCESS:");
-        console.log(res);
-        _this.doctors = res;
+        _this.doctors = res.Doctors;
       })["catch"](function (error) {
         console.log("ERROR:");
         console.log(error);
       });
     },
     showModal: function showModal() {
-      var _this2 = this;
-
       $('#modal-doctor').modal('show'); // show only save button and hide others
 
       $("#save-doctor-button").show();
@@ -1839,13 +1835,12 @@ __webpack_require__.r(__webpack_exports__);
       $("#delete-doctor-button").hide(); // get doctor from select input
 
       var selectedDoctorsName = $("#doctorsList option:selected").text().trim();
-      var selectedDoctorsId = $("#doctorsList option:selected").val(); // get Doctor data https://durs.comtrade.com
-      //https://enarocanje-gw1.comtrade.com
-
-      fetch('https://durs.comtrade.com/ctNarocanje/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode=' + selectedDoctorsId + '&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:75.0) Gecko/20100101 Firefox/75.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife').then(function (res) {
-        return res.json();
-      }).then(function (res) {
-        _this2.doctorInfo = res.DoctorInfos; // set doctor id to form input
+      var selectedDoctorsId = $("#doctorsList option:selected").val();
+      $.get('/admin/api-get-doctorsInfo', {
+        selectedDoctorsId: selectedDoctorsId
+      }).done(function (res) {
+        // res = res.json();
+        this.doctorInfo = res.DoctorInfos; // set doctor id to form input
 
         $('#doctor-id').val("");
         $('#doctor-id').val(selectedDoctorsId);
@@ -1853,32 +1848,32 @@ __webpack_require__.r(__webpack_exports__);
         $("#doctorNameSpan").append('<b>' + selectedDoctorsName + '</b>'); // for later select on change -> see home.blade.php javascript
 
         $('#doctorsInfoArr').val("");
-        $('#doctorsInfoArr').val(JSON.stringify(_this2.doctorInfo)); // populate first auto selected doctors info
+        $('#doctorsInfoArr').val(JSON.stringify(this.doctorInfo)); // populate first auto selected doctors info
 
-        $('#doctorAddress').html(_this2.doctorInfo[0].WorkplaceAddress);
-        $('#doctorPhone').html(_this2.doctorInfo[0].WorkplacePhone);
-        $('#doctorEmail').html(_this2.doctorInfo[0].DoctorEmail);
-        $('#providerName').html(_this2.doctorInfo[0].ProviderName);
-        $('#workplaceName').html(_this2.doctorInfo[0].WorkplaceName);
+        $('#doctorAddress').html(this.doctorInfo[0].WorkplaceAddress);
+        $('#doctorPhone').html(this.doctorInfo[0].WorkplacePhone);
+        $('#doctorEmail').html(this.doctorInfo[0].DoctorEmail);
+        $('#providerName').html(this.doctorInfo[0].ProviderName);
+        $('#workplaceName').html(this.doctorInfo[0].WorkplaceName);
         $('#dejavnosti').html('');
 
-        for (var i = 0; i < _this2.doctorInfo[0].VZPs.length; i++) {
-          $('#dejavnosti').append('<li>' + _this2.doctorInfo[0].VZPs[i].Description + '</li>');
+        for (var i = 0; i < this.doctorInfo[0].VZPs.length; i++) {
+          $('#dejavnosti').append('<li>' + this.doctorInfo[0].VZPs[i].Description + '</li>');
         }
 
         $('#storitve').html('');
 
-        for (var _i = 0; _i < _this2.doctorInfo[0].VZSs.length; _i++) {
-          $('#storitve').append('<li>' + _this2.doctorInfo[0].VZSs[_i].Description + '</li>');
+        for (var _i = 0; _i < this.doctorInfo[0].VZSs.length; _i++) {
+          $('#storitve').append('<li>' + this.doctorInfo[0].VZSs[_i].Description + '</li>');
         } // populate ambulante
 
 
         $('#ambulante').html("");
 
-        for (var _i2 = 0; _i2 < _this2.doctorInfo.length; _i2++) {
+        for (var _i2 = 0; _i2 < this.doctorInfo.length; _i2++) {
           $('#ambulante').append($('<option>', {
-            value: _this2.doctorInfo[_i2].WorkplaceCode,
-            text: _this2.doctorInfo[_i2].WorkplaceName
+            value: this.doctorInfo[_i2].WorkplaceCode,
+            text: this.doctorInfo[_i2].WorkplaceName
           }));
         }
       });

@@ -56,9 +56,7 @@
     			fetch('/admin/api-get-doctors')
     			.then( res => res.json())
     			.then( res => {
-    			    console.log("SUCCESS:");
-    			    console.log(res);
-    				this.doctors = res;
+    				this.doctors = res.Doctors;
     			}).catch(function(error) {
     			    console.log("ERROR:");
                     console.log(error);
@@ -75,11 +73,10 @@
                 // get doctor from select input
                 let selectedDoctorsName = $("#doctorsList option:selected").text().trim();
                 let selectedDoctorsId = $("#doctorsList option:selected").val();
-                // get Doctor data https://durs.comtrade.com
-                //https://enarocanje-gw1.comtrade.com
-                fetch('https://durs.comtrade.com/ctNarocanje/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode='+selectedDoctorsId+'&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:75.0) Gecko/20100101 Firefox/75.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife')
-                .then( res => res.json())
-                .then( res => {
+
+                $.get('/admin/api-get-doctorsInfo',{selectedDoctorsId:selectedDoctorsId})
+                .done( function(res) {
+                    // res = res.json();
                     this.doctorInfo = res.DoctorInfos;
 
                     // set doctor id to form input
