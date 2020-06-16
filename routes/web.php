@@ -41,4 +41,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('api-get-doctors', 'ApiController@getDoctors')->name('api-get-doctors');
     Route::get('api-get-doctorsInfo', 'ApiController@getDoctorsInfo')->name('api-get-doctorsInfo');
+    Route::get('api-get-freeSlots', 'ApiController@getFreeSlots')->name('api-get-freeSlots');
 });

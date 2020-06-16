@@ -106,9 +106,8 @@
             $.post('{{route('admin.get-work-place')}}', {_token: "{{ csrf_token() }}", docId:docId})
                 .done(function(data){
                     let workplaceOfselectedDoctor = data[0].workspace;
-                    fetch('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetFreeSlots?request.workplaceCode='+workplaceOfselectedDoctor+'&request.doctorIVZCode='+docId+'&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=browser (User-Agent): Mozilla/5.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife')
-                        .then( res => res.json())
-                        .then( res => {
+                    $.get('/admin/api-get-freeSlots', {selectedDoctorsId: doctorId, workplace: workplaceOfselectedDoctor})
+                        .done(function (res) {
 
                             if(!res.IsSuccessful){
                                 // alert("API error");
