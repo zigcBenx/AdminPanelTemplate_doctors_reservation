@@ -80,17 +80,19 @@
 
                 $('#users-doctors-list').html('');
                 $('#users-doctors-list').append("<ul>");
-                for(let i = 0; i < data.length; i++) {
-                    let doctorId = data[i].doctor_id;
-                    $.get('/admin/api-get-doctorsInfo',{selectedDoctorsId:doctorId})
-                        .done( function(res) {
-                            let doctorsFirstName = res.DoctorInfos[0].DoctorFirstName;
-                            let doctorsLastName = res.DoctorInfos[0].DoctorLastName;
-                            // append
-                            $('#users-doctors-list').append("<li>" + doctorsFirstName + " " + doctorsLastName + " <a href='#' class='edit-doctor text-danger' title='Izbriši' id='"+doctorId+"'><i class='fa fa-times'></i></a></li>");
-                        });
+                if(data.length > 0) {
+                    for (let i = 0; i < data.length; i++) {
+                        let doctorId = data[i].doctor_id;
+                        $.get('/admin/api-get-doctorsInfo', {selectedDoctorsId: doctorId})
+                            .done(function (res) {
+                                let doctorsFirstName = res.DoctorInfos[0].DoctorFirstName;
+                                let doctorsLastName = res.DoctorInfos[0].DoctorLastName;
+                                // append
+                                $('#users-doctors-list').append("<li>" + doctorsFirstName + " " + doctorsLastName + " <a href='#' class='edit-doctor text-danger' title='Izbriši' id='" + doctorId + "'><i class='fa fa-times'></i></a></li>");
+                            });
+                    }
+                    $('#users-doctors-list').append("</ul>");
                 }
-                $('#users-doctors-list').append("</ul>");
 
             });
 

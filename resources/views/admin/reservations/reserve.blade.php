@@ -71,16 +71,19 @@
                     return;
                 }
                 displayDoctor = data[0].doctor_id;
-                $("#users-doctors-list").append('<option>Izberi zdravnika</option>')
-                for(let i = 0; i < data.length; i++) {
-                    let doctorId = data[i].doctor_id;
-                    fetch('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode='+doctorId+'&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType= browser (User-Agent): Mozilla/5.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife')
-                        .then( res => res.json())
-                        .then( res => {
-                            let doctorsFirstName = res.DoctorInfos[0].DoctorFirstName;
-                            let doctorsLastName = res.DoctorInfos[0].DoctorLastName;
-                            $("#users-doctors-list").append('<option value="'+res.DoctorInfos[0].DoctorIVZCode+'">'+doctorsFirstName+' '+doctorsLastName+'</option>')
-                        });
+                if(data.length > 0) {
+                    $("#users-doctors-list").append('<option>Izberi zdravnika</option>')
+                    for (let i = 0; i < data.length; i++) {
+                        let doctorId = data[i].doctor_id;
+                        $.get('/admin/api-get-doctorsInfo', {selectedDoctorsId: doctorId})
+                            .done(function (res) {
+                                let doctorsFirstName = res.DoctorInfos[0].DoctorFirstName;
+                                let doctorsLastName = res.DoctorInfos[0].DoctorLastName;
+                                $("#users-doctors-list").append('<option value="' + res.DoctorInfos[0].DoctorIVZCode + '">' + doctorsFirstName + ' ' + doctorsLastName + '</option>')
+                            });
+                    }
+                }else{
+                    $("#users-doctors-list").append('<option>Najprej dodajte zdravnika</option>')
                 }
                 $('.loading').hide();
 
