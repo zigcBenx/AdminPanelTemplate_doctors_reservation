@@ -82,9 +82,8 @@
                 $('#users-doctors-list').append("<ul>");
                 for(let i = 0; i < data.length; i++) {
                     let doctorId = data[i].doctor_id;
-                    fetch('https://enarocanje-gw1.comtrade.com/ctNarocanjeTest/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode='+doctorId+'&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType= browser (User-Agent): Mozilla/5.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife')
-                        .then( res => res.json())
-                        .then( res => {
+                    $.get('/admin/api-get-doctorsInfo',{selectedDoctorsId:doctorId})
+                        .done( function(res) {
                             let doctorsFirstName = res.DoctorInfos[0].DoctorFirstName;
                             let doctorsLastName = res.DoctorInfos[0].DoctorLastName;
                             // append
