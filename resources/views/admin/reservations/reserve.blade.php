@@ -97,7 +97,7 @@
         });
 
         $("#users-doctors-list").change(function(){
-            showFreeSlots($(this).val(),$('input[name="date"]').val());
+            showFreeSlots($("#users-doctors-list").val(),$('input[name="date"]').val());
         });
 
 
