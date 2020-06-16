@@ -106,7 +106,7 @@
             $.post('{{route('admin.get-work-place')}}', {_token: "{{ csrf_token() }}", docId:docId})
                 .done(function(data){
                     let workplaceOfselectedDoctor = data[0].workspace;
-                    $.get('/admin/api-get-freeSlots', {selectedDoctorsId: doctorId, workplace: workplaceOfselectedDoctor})
+                    $.get('/admin/api-get-freeSlots', {selectedDoctorsId: docId, workplace: workplaceOfselectedDoctor})
                         .done(function (res) {
 
                             if(!res.IsSuccessful){
