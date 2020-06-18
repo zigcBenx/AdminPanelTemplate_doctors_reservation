@@ -44,4 +44,14 @@ class ApiController extends Controller
 
         return json_decode($response->getBody(), true);
     }
+
+    public function bookSlot(Request $request){
+        $params = $request->get('params');
+        $params = array_merge($params,['verify' => false]);
+        $endpoint = $this->api . "";
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('POST', $endpoint, $params);
+
+        return json_decode($response->getBody(), true);
+    }
 }
