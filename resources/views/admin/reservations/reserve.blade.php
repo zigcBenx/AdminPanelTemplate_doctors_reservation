@@ -182,11 +182,11 @@
                                 },
                                 "Comment": "string",
                                 "Attachments": [
-                                    {
-                                        "Name": "Name",
-                                        "Content": "0",
-                                        "Comment": "Comment"
-                                    },
+                                    //{
+                                    //    "Name": "Name",
+                                    //    "Content": "0",
+                                    //    "Comment": "Comment"
+                                    //},
                                 ],
                                 "WorkplaceCode": workplaceOfselectedDoctor,
                                 "DoctorIVZCode": $("#users-doctors-list").val(),

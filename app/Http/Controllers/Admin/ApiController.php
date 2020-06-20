@@ -45,6 +45,16 @@ class ApiController extends Controller
         return json_decode($response->getBody(), true);
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * curl -d '{ "Patient":{ "KzzNumber":"900001300", "Email":"test@test.com", "Phone":"031200334"}, "Slot":{ "SlotId":213854, "Start":"2020-06-22T07:20:00", "End":"2020-06-22T07:40:00" }, "Comment":"nekrandomtestnicomment", "Attachments":[], "WorkplaceCode":"2296", "DoctorIVZCode":"95400", "ProviderZZZSNumber":"102320", "Client":{ "UniqueDeviceId":"A3DE534DB","ClientType":"browser(User-Agent):Mozilla/5.0","ApplicationVersion":"1.22","ApplicationId":"myXlife"}}' -H "Content-Type: application/json" -X POST https://durs.comtrade.com/ctNarocanje/api/ElektronskoNarocanje/BookSlot -k
+     *
+     * tale curl ukaz vrne isSuccessfull true, tak da je vrjetn prav
+     *
+     */
     public function bookSlot(Request $request){
         $params = $request->get('params');
         $params = array_merge($params,['verify' => false]);
