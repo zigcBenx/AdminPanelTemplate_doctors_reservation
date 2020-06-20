@@ -57,13 +57,14 @@ class ApiController extends Controller
      */
     public function bookSlot(Request $request){
         $params = $request->get('params');
-        $params = array_merge($params,['verify' => false]);
+        // $params = array_merge($params);
         $headers = [
             'Content-Type' => 'application/json',
         ];
         $endpoint = $this->api . "/api/ElektronskoNarocanje/BookSlot";
         $client = new \GuzzleHttp\Client();
         $response = $client->request('POST', $endpoint, [
+            'verify' => false,
             "headers"=>$headers,
             "form_params" => $params,
             ]
