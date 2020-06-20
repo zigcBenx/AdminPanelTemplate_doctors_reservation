@@ -60,11 +60,11 @@ class ApiController extends Controller
         $params = array_merge($params);
         $headers = [
             'Content-Type' => 'application/json',
+            'verify' => false,
         ];
         $endpoint = $this->api . "/api/ElektronskoNarocanje/BookSlot";
         $client = new \GuzzleHttp\Client();
         $response = $client->request('POST', $endpoint, [
-            'verify' => false,
             "headers"=>$headers,
             "form_params" => $params,
             ]
