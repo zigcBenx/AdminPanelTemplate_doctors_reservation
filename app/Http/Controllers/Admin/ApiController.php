@@ -57,9 +57,8 @@ class ApiController extends Controller
      */
     public function bookSlot(Request $request){
         $params = $request->get('params');
-        $params = array_merge($params);
+        $params = array_merge($params,['verify' => false]);
         $headers = [
-            'verify' => false,
             'Content-Type' => 'application/json',
         ];
         $endpoint = $this->api . "/api/ElektronskoNarocanje/BookSlot";
