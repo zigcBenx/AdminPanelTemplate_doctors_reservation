@@ -65,7 +65,7 @@ class ApiController extends Controller
         $client = new \GuzzleHttp\Client();
         $response = $client->request('POST', $endpoint, [
             'verify' => false,
-            "headers"=>$headers,
+            //"headers" => $headers,
             "form_params" => $params,
             ]
         );
