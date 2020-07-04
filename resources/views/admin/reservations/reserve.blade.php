@@ -205,9 +205,14 @@
                     .done(function(data){
                         if(!data.isSuccessful){
                             console.log(data);
-                            alert(data.ErrorDescription);
+                            if(data.ErrorDescription != null) {
+                                alert(data.ErrorDescription);
+                            }else{
+                                showFreeSlots($("#users-doctors-list").val(),$('input[name="date"]').val());
+                            }
                             return;
                         }
+                        showFreeSlots($("#users-doctors-list").val(),$('input[name="date"]').val());
                         alert("Termin je uspešno rezerviran.");
                     });
                 });
