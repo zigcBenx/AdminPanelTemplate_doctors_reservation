@@ -209,11 +209,15 @@
                                 alert(data.ErrorDescription);
                             }else{
                                 showFreeSlots($("#users-doctors-list").val(),$('input[name="date"]').val());
+                                $('#reserve-modal').modal('hide');
+                                alert("Termin je uspešno rezerviran.");
                             }
                             return;
                         }
                         showFreeSlots($("#users-doctors-list").val(),$('input[name="date"]').val());
+                        $('#reserve-modal').modal('hide');
                         alert("Termin je uspešno rezerviran.");
+
                     });
                 });
         });
