@@ -208,19 +208,30 @@
                             if(data.ErrorDescription != null) {
                                 alert(data.ErrorDescription);
                             }else{
-                                showFreeSlots($("#users-doctors-list").val(),$('input[name="date"]').val());
-                                $('#reserve-modal').modal('hide');
-                                alert("Termin je uspešno rezerviran.");
+                                successfullReservation(dataToSend);
                             }
                             return;
                         }
-                        showFreeSlots($("#users-doctors-list").val(),$('input[name="date"]').val());
-                        $('#reserve-modal').modal('hide');
-                        alert("Termin je uspešno rezerviran.");
+                        successfullReservation(dataToSend);
 
                     });
                 });
         });
+
+        function successfullReservation(dataToSend){
+            showFreeSlots($("#users-doctors-list").val(),$('input[name="date"]').val());
+            $('#reserve-modal').modal('hide');
+            alert("Termin je uspešno rezerviran.");
+
+            // add reservation to database
+            $.post('{{route('admin.reservations-create')}}',dataToSend)
+                .done(function(data){
+                    if(data == 'nojs'){
+                        // termin je uspešno dodan v podatkovno bazo
+                    }else{ // wtf should I do if it's not inserted successfully???
+                    }
+                });
+        }
     });
 
     /**
