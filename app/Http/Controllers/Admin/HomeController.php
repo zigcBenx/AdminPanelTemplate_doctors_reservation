@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Reservations;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,6 +30,13 @@ class HomeController
     }
 
     public function pregledi() {
-        return view('admin.pregledi');
+        $reservations = Reservations::all()->where('user_id', Auth::id())->sortByDesc('start');
+
+        return view('admin.pregledi')->with(compact('reservations'));
+    }
+
+    public function lab() {
+
+        return view('admin.lab');
     }
 }
