@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use League\Flysystem\Config;
 
 class ApiController extends Controller
 {
@@ -15,11 +16,9 @@ class ApiController extends Controller
      * Najprej spremeni še vse ostale get api klice na ta način pol pa probi še poste sepravi dejanskerezervacije terminov.
      *
      */
-    public $api = "https://durs.comtrade.com/ctNarocanje"; //https://enarocanje-gw1.comtrade.com/ctNarocanjeTest
-//    public $api = "https://enarocanje-gw1.comtrade.com/ctNarocanjeTest";
 
     public function getDoctors(){
-        $endpoint = $this->api . "/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:75.0) Gecko/20100101 Firefox/75.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife";
+        $endpoint = config('constants.API_SOURCE_TESTING') . "/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:75.0) Gecko/20100101 Firefox/75.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife";
         $client = new \GuzzleHttp\Client();
         $response = $client->request('GET', $endpoint, ['verify' => false]);
 
@@ -28,7 +27,7 @@ class ApiController extends Controller
 
     public function getDoctorsInfo(Request $request){
         $selectedDoctorsId = $request->get('selectedDoctorsId');
-        $endpoint = $this->api . "/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode=" . $selectedDoctorsId . "&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:75.0) Gecko/20100101 Firefox/75.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife";
+        $endpoint = config('constants.API_SOURCE_TESTING') . "/api/ElektronskoNarocanje/GetDoctorInfo?request.doctorIVZCode=" . $selectedDoctorsId . "&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:75.0) Gecko/20100101 Firefox/75.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife";
         $client = new \GuzzleHttp\Client();
         $response = $client->request('GET', $endpoint, ['verify' => false]);
 
@@ -38,7 +37,7 @@ class ApiController extends Controller
     public function getFreeSlots(Request $request){
         $workplaceOfselectedDoctor = $request->get('workplace');
         $docId = $request->get('selectedDoctorsId');
-        $endpoint = $this->api . "/api/ElektronskoNarocanje/GetFreeSlots?request.workplaceCode=" . $workplaceOfselectedDoctor . "&request.doctorIVZCode=" . $docId . "&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=browser (User-Agent): Mozilla/5.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife";
+        $endpoint = config('constants.API_SOURCE_TESTING') . "/api/ElektronskoNarocanje/GetFreeSlots?request.workplaceCode=" . $workplaceOfselectedDoctor . "&request.doctorIVZCode=" . $docId . "&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=browser (User-Agent): Mozilla/5.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife";
         $client = new \GuzzleHttp\Client();
         $response = $client->request('GET', $endpoint, ['verify' => false]);
 
@@ -55,13 +54,13 @@ class ApiController extends Controller
      * tale curl ukaz vrne isSuccessfull true, tak da je vrjetn prav
      *
      */
-    public function bookSlot(Request $request){
+    public function bookSlot(Request $request) {
         $params = $request->get('params');
         // $params = array_merge($params);
         $headers = [
             'Content-Type' => 'application/json',
         ];
-        $endpoint = $this->api . "/api/ElektronskoNarocanje/BookSlot";
+        $endpoint = config('constants.API_SOURCE_TESTING') . "/api/ElektronskoNarocanje/BookSlot";
         $client = new \GuzzleHttp\Client();
         $response = $client->request('POST', $endpoint, [
             'verify' => false,
@@ -69,6 +68,49 @@ class ApiController extends Controller
             "form_params" => $params,
             ]
         );
+
+        return json_decode($response->getBody(), true);
+    }
+
+    public function cancelBookedSlot(Request $request) {
+        $params = $request->get('params');
+        $headers = [
+            'Content-Type' => 'application/json',
+        ];
+        $endpoint = config('constants.API_SOURCE_TESTING') . "/api/ElektronskoNarocanje/CancelSlotBooking";
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('POST', $endpoint, [
+                'verify' => false,
+                //"headers" => $headers,
+                "form_params" => $params,
+            ]
+        );
+
+        return json_decode($response->getBody(), true);
+//        return json_decode('{"temp":"JOUUU"}', true);
+    }
+
+    public function requestPerscription(Request $request) {
+        $params = $request->get('params');
+        $headers = [
+            'Content-Type' => 'application/json',
+        ];
+        $endpoint = config('constants.API_SOURCE_TESTING') . "/api/ElektronskoNarocanje/RequestPrescription";
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('POST', $endpoint, [
+                'verify' => false,
+                //"headers" => $headers,
+                "form_params" => $params,
+            ]
+        );
+
+        return json_decode($response->getBody(), true);
+    }
+
+    public function getLabSlots(){
+        $endpoint = config('constants.API_SOURCE_TESTING') . "/api/ElektronskoNarocanje/GetFreeLabSlots?request.labOrderNumber=3232&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=browser&request.client.applicationVersion=1.22&request.client.applicationId=myXlife";
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('GET', $endpoint, ['verify' => false]);
 
         return json_decode($response->getBody(), true);
     }
