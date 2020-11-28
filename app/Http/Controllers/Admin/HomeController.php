@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Perscription;
 use App\Reservations;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,8 @@ class HomeController
 
     public function recepti() {
         $user = Auth::user();
-        return view('admin.recepti')->with(compact('user'));
+        $recepti = Perscription::all()->where('userId', Auth::id());
+        return view('admin.recepti')->with(compact('user','recepti'));
     }
 
     public function pregledi() {
@@ -36,7 +38,7 @@ class HomeController
     }
 
     public function lab() {
-
-        return view('admin.lab');
+        $user = Auth::user();
+        return view('admin.lab')->with(compact('user'));
     }
 }

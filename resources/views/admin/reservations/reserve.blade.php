@@ -223,8 +223,16 @@
             $('#reserve-modal').modal('hide');
             alert("Termin je uspešno rezerviran.");
 
+            let slotId = dataToSend.params.Slot.SlotId;
+            let workplace_id = dataToSend.params.WorkplaceCode;
+            let start = dataToSend.params.Slot.Start;
+            let end = dataToSend.params.Slot.End;
+
+            console.log(slotId);
+            console.log(workplace_id);
+
             // add reservation to database
-            $.post('{{route('admin.reservations-create')}}',dataToSend)
+            $.post('{{route('admin.reservations-create')}}', {_token: "{{ csrf_token() }}", 'slotId':slotId, 'workplace_id':workplace_id, 'start':start, 'end':end})
                 .done(function(data){
                     if(data == 'nojs'){
                         // termin je uspešno dodan v podatkovno bazo
@@ -233,6 +241,7 @@
                 });
         }
     });
+
 
     /**
      * Open modal when trying to reserve termin

@@ -30,6 +30,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('recepti','HomeController@recepti')->name('recepti');
     Route::get('pregledi','HomeController@pregledi')->name('pregledi');
+    Route::get('lab', 'HomeController@lab')->name('lab');
 
     Route::post('user-doctor','UserDoctorController@addUserDoctor')->name('user-doctor');
     Route::post('user-doctor-show','UserDoctorController@showUserDoctor')->name('user-doctor-show');
@@ -40,9 +41,17 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('users-update', 'UserDoctorController@userUpdate')->name('users-update');
 
     Route::post('reservations-create', 'ReservationsController@createReservation')->name('reservations-create');
+    Route::post('reservations-delete', 'ReservationsController@deleteReservation')->name('reservations-delete');
 
     Route::get('api-get-doctors', 'ApiController@getDoctors')->name('api-get-doctors');
     Route::get('api-get-doctorsInfo', 'ApiController@getDoctorsInfo')->name('api-get-doctorsInfo');
     Route::get('api-get-freeSlots', 'ApiController@getFreeSlots')->name('api-get-freeSlots');
     Route::post('api-bookSlot', 'ApiController@bookSlot')->name('api-bookSlot');
+    Route::post('api-cancelBookSlot', 'ApiController@cancelBookedSlot')->name('api-cancelBookSlot');
+    Route::post('api-requestPerscription', 'ApiController@requestPerscription')->name('api-requestPerscription');
+    Route::post('api-cancelPerscription', 'ApiController@cancelPerscription')->name('api-cancelPerscription');
+    Route::get('api-requestFreeLabSlots', 'ApiController@getLabSlots')->name('api-requestFreeLabSlots');
+
+    Route::post('addPerscription', 'PerscriptionsController@addPerscription')->name('addPerscription');
+    Route::post('removePerscription', 'PerscriptionsController@removePerscription')->name('removePerscription');
 });

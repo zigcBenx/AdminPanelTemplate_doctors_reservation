@@ -95,7 +95,17 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/reserve" class="nav-link">
+                    <a href="/admin/pregledi" class="nav-link {{ request()->is('admin/pregledi') || request()->is('admin/pregledi/*') ? 'active' : '' }}">
+                        <p>
+                            <i class="fas fa-hospital">
+
+                            </i>
+                            <span>Rezervacije in pregledi</span>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/lab" class="nav-link {{ request()->is('admin/lab') || request()->is('admin/lab/*') ? 'active' : '' }}">
                         <p>
                             <i class="fa fa-stethoscope">
 
