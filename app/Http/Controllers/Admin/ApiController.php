@@ -15,8 +15,8 @@ class ApiController extends Controller
      * Najprej spremeni še vse ostale get api klice na ta način pol pa probi še poste sepravi dejanskerezervacije terminov.
      *
      */
-    public $api = "https://durs.comtrade.com/ctNarocanje"; //https://enarocanje-gw1.comtrade.com/ctNarocanjeTest
-//    public $api = "https://enarocanje-gw1.comtrade.com/ctNarocanjeTest";
+    //public $api = "https://durs.comtrade.com/ctNarocanje"; //https://enarocanje-gw1.comtrade.com/ctNarocanjeTest
+    public $api = "https://enarocanje-gw1.comtrade.com/ctNarocanjeTest";
 
     public function getDoctors(){
         $endpoint = $this->api . "/api/ElektronskoNarocanje/GetDoctors?request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:75.0) Gecko/20100101 Firefox/75.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife";
@@ -45,6 +45,18 @@ class ApiController extends Controller
         return json_decode($response->getBody(), true);
     }
 
+    public function getLabSlots(Request $request) {
+        $labNumber = $request->get('labNumber');
+        $endpoint = $this->api . "/api/ElektronskoNarocanje/GetFreeLabSlots?request.labOrderNumber=" . $labNumber . "&request.providerZZZSNumber=102320&request.client.uniqueDeviceId=A3DE534DB&request.client.clientType=browser%20(User-Agent)%3A%20Mozilla%2F5.0&request.client.applicationVersion=1.22&request.client.applicationId=myXlife";
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('GET', $endpoint, [
+                'verify' => false,
+            ]
+        );
+
+        return json_decode($response->getBody(), true);
+    }
+
     /**
      * @param Request $request
      * @return mixed
@@ -67,6 +79,49 @@ class ApiController extends Controller
             'verify' => false,
             //"headers" => $headers,
             "form_params" => $params,
+            ]
+        );
+
+        return json_decode($response->getBody(), true);
+    }
+
+    public function cancelBookedSlot (Request $request) {
+        $params = $request->get('params');
+        $endpoint = $this->api . "/api/ElektronskoNarocanje/CancelSlotBooking";
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('POST', $endpoint, [
+                'verify' => false,
+                //"headers" => $headers,
+                "form_params" => $params,
+            ]
+        );
+
+        return json_decode($response->getBody(), true);
+    }
+
+
+    public function requestPerscription(Request $request) {
+        $params = $request->get('params');
+        $endpoint = $this->api . "/api/ElektronskoNarocanje/RequestPrescription";
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('POST', $endpoint, [
+                'verify' => false,
+                //"headers" => $headers,
+                "form_params" => $params,
+            ]
+        );
+
+        return json_decode($response->getBody(), true);
+    }
+
+    public function cancelPerscription(Request $request) {
+        $params = $request->get('params');
+        $endpoint = $this->api . "/api/ElektronskoNarocanje/CancelRequestedPrescription";
+        $client = new \GuzzleHttp\Client();
+        $response = $client->request('POST', $endpoint, [
+                'verify' => false,
+                //"headers" => $headers,
+                "form_params" => $params,
             ]
         );
 
