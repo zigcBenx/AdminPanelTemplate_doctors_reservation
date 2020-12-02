@@ -20,7 +20,7 @@
                     <div class="col-md-4">
                         @if(($reservation->canceled === 0) ?? (! \Carbon\Carbon::parse($reservation->start)->isPast()))
                             <a href="javascript:;" class="btn btn-danger cancel-reservation">Prekliči rezervacijo</a>
-                            <input type="hidden" data-name="slotId" value="{{$reservation->workplace_id}}">
+                            <input type="hidden" data-name="slotId" value="{{$reservation->slotId}}">
                             <input type="hidden" data-name="start" value="{{$reservation->start}}">
                             <input type="hidden" data-name="end" value="{{$reservation->end}}">
                             <input type="hidden" data-name="resid" value="{{$reservation->id}}">
@@ -72,17 +72,24 @@
                     };
                 $.post('{{route('admin.api-cancelBookSlot')}}',dataToSend)
                     .done(function(data){
-                        alert("Termin uspešno preklican");
-                        $.post('{{route('admin.reservations-delete')}}',{_token: "{{ csrf_token() }}", id:resid})
-                        .done(function(data){
-                            console.log("reservation canceled");
-                            location.reload(); // reload, so status of termini is correctly displayed
-                        })
-                        .fail(function(xhr, status, error){
-                            console.log(xhr);
-                            console.log(status);
-                            console.log(error);
-                        });
+                        console.log(data.IsSuccessful);
+                        console.log(data);
+                        if(data.IsSuccessful){
+                            alert("Termin uspešno preklican");
+                            $.post('{{route('admin.reservations-delete')}}',{_token: "{{ csrf_token() }}", id:resid})
+                                .done(function(data){
+                                    console.log("reservation canceled");
+                                    location.reload(); // reload, so status of termini is correctly displayed
+                                })
+                                .fail(function(xhr, status, error){
+                                    console.log(xhr);
+                                    console.log(status);
+                                    console.log(error);
+                                });
+                        }else {
+                            console.log(data);
+                            alert("Prišlo je do napake, prosimo kontaktirajte ambulanto.");
+                        }
                     })
                     .fail(function(xhr, status, error){
                         console.log(xhr);
